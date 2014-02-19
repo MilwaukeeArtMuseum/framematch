@@ -88,7 +88,7 @@ var loadManifest = [];
 						   }
 
 	window.ArtFrame = ArtFrame;
-	
+
 }());
 
 function init() {
@@ -333,11 +333,9 @@ function handleArtLoad(event) {
 			placedFrame.artContainer.addChild(bmpc);
 			didPlace = true;
 			bmpc.scaleX = bmpc.scaleY = placedFrame.artScale;
-			console.log("Wizard!");
 			createjs.Tween.get(placedFrame.bmp).to({scaleY: h * 0.00553}, 100);
 			for(var i = 0; i < frames.length; i++) {
 				if(i != placedFrameIndex) {
-					console.log("Animated The Dead");
 					createjs.Tween.get(frames[i].frameContainer).to({x:300, y:900, scaleX:0.25, scaleY:0.25}, 600, createjs.Ease.quadOut);
 				} else {
 					createjs.Tween.get(frames[i].frameContainer).to({x:0, y:0}, 800, createjs.Ease.quadOut);
