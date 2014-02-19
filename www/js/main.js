@@ -35,54 +35,61 @@ var loadManifest = [];
 
 }());
 
-var ArtFrame = function(bmp) {
-	
-	var t = this;
 
-	t.bmp = bmp;
-	
-	t.frameContainer = new createjs.Container();
-	t.frameContainer.addChild(t.bmp);
-	
-	t.frameTop = new createjs.Container();
-	
-	t.frameContainer.addChild(t.frameTop);
-	t.frameBot = new createjs.Container();
-	
-	t.frameContainer.addChild(t.frameBot);
-	t.artContainer = new createjs.Container();
-	
-	t.frameContainer.addChild(t.artContainer);
+(function() {
 
-	t.originalX = 0;
-	t.originalY = 0;
-	t.artScale = 1;
+	var ArtFrame = function(bmp) {
+		
+		var t = this;
 
-}
+		t.bmp = bmp;
+		
+		t.frameContainer = new createjs.Container();
+		t.frameContainer.addChild(t.bmp);
+		
+		t.frameTop = new createjs.Container();
+		
+		t.frameContainer.addChild(t.frameTop);
+		t.frameBot = new createjs.Container();
+		
+		t.frameContainer.addChild(t.frameBot);
+		t.artContainer = new createjs.Container();
+		
+		t.frameContainer.addChild(t.artContainer);
 
-ArtFrame.prototype.setPoint = function(pt) {
-	this.artPoint = pt;
-	this.artContainer.x = this.artPoint.x;
-	this.artContainer.y = this.artPoint.y;
-};
-ArtFrame.prototype.setScale = function(scale) {
-	this.artScale = scale;
-}
-ArtFrame.prototype.setXY = function(x,y) {
-	this.frameContainer.setTransform(x,y);
-	this.originalX = x;
-	this.originalY = y;
-};
-ArtFrame.prototype.setFrameHeight = function(height) {
-	this.frameContainer.scaleY = height;
-}
+		t.originalX = 0;
+		t.originalY = 0;
+		t.artScale = 1;
 
-ArtFrame.FRAME_TYPES = {KING_LOUIS:"frame_kinglouis",
-						FRAME_NARROW:"frame_narrow",
-						FRAME_REVERSE:"frame_reverse",
-						CASSETTA:"frame_cassetta",
-					   }
+	}
 
+	ArtFrame.prototype.setPoint = function(pt) {
+		this.artPoint = pt;
+		this.artContainer.x = this.artPoint.x;
+		this.artContainer.y = this.artPoint.y;
+	};
+	ArtFrame.prototype.setScale = function(scale) {
+		this.artScale = scale;
+	}
+	ArtFrame.prototype.setXY = function(pt) {
+		
+		this.frameContainer.setTransform(pt.x,pt.y);
+		this.originalX = pt.x;
+		this.originalY = pt.y;
+	};
+	ArtFrame.prototype.setFrameHeight = function(height) {
+		this.frameContainer.scaleY = height;
+	}
+
+	ArtFrame.FRAME_TYPES = {KING_LOUIS:"frame_kinglouis",
+							FRAME_NARROW:"frame_narrow",
+							FRAME_REVERSE:"frame_reverse",
+							CASSETTA:"frame_cassetta",
+						   }
+
+	window.ArtFrame = ArtFrame;
+	
+}());
 
 function init() {
 
@@ -186,42 +193,40 @@ function handleFrameLoad(event){
 	//bmp.regX = w/2;
 	//bmp.regY = w/2;
 
-	var ap;
-
-	var af = new ArtFrame(bmp);
-	var fc = af.frameContainer;
+	var ap, xy, scale;
 
 	switch(item.id) {
 		case "frame_reverse":
-			af.setXY(0,310)
-			af.setScale(1.208);
+			xy = new createjs.Point(0,310)
+			scale = 1.208;
 			ap = new createjs.Point(16,16);
 		break;
 		case "frame_narrow":
-			af.setXY(400,20);
-			af.setScale(1.249);
+			xy = new createjs.Point(400,20);
+			scale = 1.249;
 			ap = new createjs.Point(4,4);
 		break;
 		case "frame_cassetta":
-			af.setXY(390, 310);
-			af.setScale(1.096);
+			xy = new createjs.Point(390, 310);
+			scale = 1.096;
 			ap = new createjs.Point(22,19);
 		break;
 		case "frame_kinglouis":
-			af.setXY(0,0);
-			af.setScale(1.09);
+			xy = new createjs.Point(0,0);
+			scale = 1.09;
 			ap = new createjs.Point(22,18);
 		break;
 	}
+	
+	var af = new ArtFrame(bmp);
+	var fc = af.frameContainer;
 
+	af.setScale(scale);
+	af.setXY(xy);
 	af.setPoint(ap);
 
 	frames.push(af);
 	
-	fc.on("pressup", function (evt) {
-		console.log("Hello");
-	});
-
 	frameBox.addChild(fc);
 
 }
