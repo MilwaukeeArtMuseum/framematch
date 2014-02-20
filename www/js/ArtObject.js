@@ -29,6 +29,7 @@
 	    t.artImageURL = o.artImage;
 
 	    t.audio = [];
+	    
 	    t.audio[ArtFrame.FRAME_TYPES.KING_LOUIS] = o.audio.frame_kinglouis;
 	    t.audio[ArtFrame.FRAME_TYPES.FRAME_REVERSE] = o.audio.frame_reverse;
 	    t.audio[ArtFrame.FRAME_TYPES.FRAME_NARROW] = o.audio.frame_narrow;

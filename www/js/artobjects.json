@@ -13,10 +13,10 @@
 		"photoCredit":"Larry Sanders",
 		"artImage":"01.png",
 		"audio": {
-			"frame_cassetta":"001pframe.mp3",
-			"frame_reverse":"001KFRAME.mp3",
-			"frame_kinglouis":"001RFRAME.mp3",
-			"frame_narrow":"001CFRAME.mp3"
+			"frame_cassetta":"003Cframe.mp3",
+			"frame_reverse":"003KFRAME.mp3",
+			"frame_kinglouis":"003RFRAME.mp3",
+			"frame_narrow":"003pFRAME.mp3"
 		}
 	}, 
 	{
@@ -33,10 +33,10 @@
 		"photoCredit":"P. Richard Eells",
 		"artImage":"02.png",
 		"audio": {
-			"frame_cassetta":"001pframe.mp3",
-			"frame_reverse":"001KFRAME.mp3",
-			"frame_kinglouis":"001RFRAME.mp3",
-			"frame_narrow":"001CFRAME.mp3"
+			"frame_cassetta":"002Cframe.mp3",
+			"frame_reverse":"002KFRAME.mp3",
+			"frame_kinglouis":"002RFRAME.mp3",
+			"frame_narrow":"002pFRAME.mp3"
 		}
 	},
 	{
@@ -53,10 +53,10 @@
 		"photoCredit":"John R. Glembin",
 		"artImage":"03.png",
 		"audio": {
-			"frame_cassetta":"001pframe.mp3",
-			"frame_reverse":"001KFRAME.mp3",
-			"frame_kinglouis":"001RFRAME.mp3",
-			"frame_narrow":"001CFRAME.mp3"
+			"frame_cassetta":"004Cframe.mp3",
+			"frame_reverse":"004KFRAME.mp3",
+			"frame_kinglouis":"004RFRAME.mp3",
+			"frame_narrow":"004pFRAME.mp3"
 		}
 	},
 	{
@@ -73,10 +73,10 @@
 		"photoCredit":"John R. Glembin",
 		"artImage":"04.png",
 		"audio": {
-			"frame_cassetta":"001pframe.mp3",
-			"frame_reverse":"001KFRAME.mp3",
-			"frame_kinglouis":"001RFRAME.mp3",
-			"frame_narrow":"001CFRAME.mp3"
+			"frame_cassetta":"006Cframe.mp3",
+			"frame_reverse":"006KFRAME.mp3",
+			"frame_kinglouis":"006RFRAME.mp3",
+			"frame_narrow":"006pFRAME.mp3"
 		}
 	},
 	{
@@ -93,10 +93,10 @@
 		"photoCredit":"John Nienhuis, Dedra Walls",
 		"artImage":"05.png",
 		"audio": {
-			"frame_cassetta":"001pframe.mp3",
+			"frame_cassetta":"001Cframe.mp3",
 			"frame_reverse":"001KFRAME.mp3",
 			"frame_kinglouis":"001RFRAME.mp3",
-			"frame_narrow":"001CFRAME.mp3"
+			"frame_narrow":"001pFRAME.mp3"
 		}
 	},
 	{
@@ -113,10 +113,10 @@
 		"photoCredit":"Larry Sanders",
 		"artImage":"06.png",
 		"audio": {
-			"frame_cassetta":"001pframe.mp3",
-			"frame_reverse":"001KFRAME.mp3",
-			"frame_kinglouis":"001RFRAME.mp3",
-			"frame_narrow":"001CFRAME.mp3"
+			"frame_cassetta":"007Cframe.mp3",
+			"frame_reverse":"007KFRAME.mp3",
+			"frame_kinglouis":"007RFRAME.mp3",
+			"frame_narrow":"007pFRAME.mp3"
 		}
 	},
 	{
@@ -133,10 +133,10 @@
 		"photoCredit":"Larry Sanders",
 		"artImage":"07.png",
 		"audio": {
-			"frame_cassetta":"001pframe.mp3",
-			"frame_reverse":"001KFRAME.mp3",
-			"frame_kinglouis":"001RFRAME.mp3",
-			"frame_narrow":"001CFRAME.mp3"
+			"frame_cassetta":"005Cframe.mp3",
+			"frame_reverse":"005KFRAME.mp3",
+			"frame_kinglouis":"005RFRAME.mp3",
+			"frame_narrow":"005pFRAME.mp3"
 		}
 	},
 	{
@@ -153,10 +153,10 @@
 		"photoCredit":"John Nienhuis, Dedra Walls",
 		"artImage":"08.png",
 		"audio": {
-			"frame_cassetta":"001pframe.mp3",
-			"frame_reverse":"001KFRAME.mp3",
-			"frame_kinglouis":"001RFRAME.mp3",
-			"frame_narrow":"001CFRAME.mp3"
+			"frame_cassetta":"008Cframe.mp3",
+			"frame_reverse":"008KFRAME.mp3",
+			"frame_kinglouis":"008RFRAME.mp3",
+			"frame_narrow":"008pFRAME.mp3"
 		}
 	}
 ]
