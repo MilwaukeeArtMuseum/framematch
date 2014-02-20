@@ -28,6 +28,11 @@ var loadManifest = [];
 
 	p.initialize = function(objectDefinition) {
 	    this.Container_initialize();
+
+	    this.id = objectDefinition.id;
+	    
+	    this.artistName = objectDefinition.artistName;
+	    console.log(this.artistName);
 	    // add custom setup logic here.
 	}
 	 
@@ -90,15 +95,21 @@ function init() {
 	queue.on("fileload", handleArtLoad, this);
 	queue.on("complete", handleArtComplete, this);
 
+	var artManifest = [];
+
+
 	$.getJSON("js/artobjects.json", function(data) {
 		$.each(data, function() {
 			
 			var img = this.artImage;
-			objects.push(new ArtObject(this));
-			queue.loadFile("img/art/" + img, false);
+			var id = this.id;
+			var a = new ArtObject(this);
+			artManifest.push({src:"img/art/"+img, id:id, data:{artObject:a}});
+			//objects.push();
+			//queue.loadFile("img/art/" + img, false);
 		});
 
-		queue.load();
+		queue.loadManifest(artManifest, true);
 
 	});
 
@@ -121,6 +132,10 @@ function init() {
 	stage.update();
 	createjs.Ticker.addEventListener("tick", stage);
 	createjs.Ticker.setFPS(30);
+
+}
+
+function selectFrame() {
 
 }
 
@@ -187,7 +202,10 @@ function handleArtLoad(event) {
 	var image = event.result;
 	var w = image.width;
 	var h = image.height;
- 	
+ 	var ao = item.data.artObject;
+
+ 	console.log(ao);
+
 	var bmp = new createjs.Bitmap(image);
 	
 	bmp.scaleX = 0.35;
@@ -286,6 +304,8 @@ function handleArtLoad(event) {
 					createjs.Tween.get(frames[i].frameContainer).to({x:0, y:0}, 800, createjs.Ease.quadOut);
 				}
 			}
+
+			selectFrame();
 
 		}
 
