@@ -14,31 +14,7 @@ var p = this;
 
 
 var loadManifest = [];
-
-
-(function() {
- 
-	var ArtObject = function(objectDefinition) {
-	  this.initialize(objectDefinition);
-	}
-
-	var p = ArtObject.prototype = new createjs.Container();
-	 
-	p.Container_initialize = p.initialize;
-
-	p.initialize = function(objectDefinition) {
-	    this.Container_initialize();
-
-	    this.id = objectDefinition.id;
-	    
-	    this.artistName = objectDefinition.artistName;
-	    console.log(this.artistName);
-	    // add custom setup logic here.
-	}
-	 
-	window.ArtObject = ArtObject;
-
-}());
+var audioLoader;
 
 
 function init() {
@@ -104,6 +80,7 @@ function init() {
 			var img = this.artImage;
 			var id = this.id;
 			var a = new ArtObject(this);
+			objects.push(a);
 			artManifest.push({src:"img/art/"+img, id:id, data:{artObject:a}});
 			//objects.push();
 			//queue.loadFile("img/art/" + img, false);
@@ -135,7 +112,30 @@ function init() {
 
 }
 
-function selectFrame() {
+
+function handleAudioLoad(event) {
+	console.log("Audio Loaded");
+	var instance = createjs.Sound.play("mySound");
+}
+
+function handleAudioComplete(event) {
+	console.log("Audio Load Complete");
+}
+
+function selectFrame(art, frame) {
+	
+	var audioPath = art.audio[frame.frameType];
+
+	console.log("You put the " + art.artistName + " inside of the " + frame.frameType);
+	console.log("Playing... " + audioPath);
+ 	createjs.Sound.alternateExtensions = ["mp3"];
+	audioLoader = new createjs.LoadQueue(true);
+	audioLoader.installPlugin(createjs.Sound);
+	audioLoader.on("fileload", handleAudioLoad, this);
+	audioLoader.on("complete", handleAudioComplete, this);
+	audioLoader.loadFile({id:"mySound", src:"audio/"+audioPath});
+
+
 
 }
 
@@ -153,32 +153,36 @@ function handleFrameLoad(event){
 	//bmp.regX = w/2;
 	//bmp.regY = w/2;
 
-	var ap, xy, scale;
+	var ap, xy, scale, frameType;
 
 	switch(item.id) {
 		case "frame_reverse":
 			xy = new createjs.Point(0,310)
 			scale = 1.208;
 			ap = new createjs.Point(16,16);
+			frameType = ArtFrame.FRAME_TYPES.FRAME_REVERSE;
 		break;
 		case "frame_narrow":
 			xy = new createjs.Point(400,20);
 			scale = 1.249;
 			ap = new createjs.Point(4,4);
+			frameType = ArtFrame.FRAME_TYPES.FRAME_NARROW;
 		break;
 		case "frame_cassetta":
 			xy = new createjs.Point(390, 310);
 			scale = 1.096;
 			ap = new createjs.Point(22,19);
+			frameType = ArtFrame.FRAME_TYPES.CASSETTA;
 		break;
 		case "frame_kinglouis":
 			xy = new createjs.Point(0,0);
 			scale = 1.09;
 			ap = new createjs.Point(22,18);
+			frameType = ArtFrame.FRAME_TYPES.KING_LOUIS;
 		break;
 	}
 	
-	var af = new ArtFrame(bmp);
+	var af = new ArtFrame(bmp, frameType);
 	var fc = af.frameContainer;
 
 	af.setScale(scale);
@@ -228,6 +232,7 @@ function handleArtLoad(event) {
 
 	bmp.on("mousedown", function(evt) {
 		//this.parent.addChild(this);
+		createjs.Sound.stop("mySound");
 		this.offset = {x:this.x-evt.stageX, y:this.y-evt.stageY};
 		this.rotation = -5;
 		$.each(frames, function() {
@@ -286,8 +291,11 @@ function handleArtLoad(event) {
 		// setArtInFrame(this, placedFrame);
 
 		if(didPlace) {
+			
 			console.log("Dear "+ this.id + ",\n\nYou intersect with me!\n\nBest,\n" + placedFrame.bmp.id);
+			
 			var bmpc = new createjs.Bitmap(this.image);
+			
 			bmpc.x = placedFrame.artPoint.x;
 			bmpc.y = placedFrame.artPoint.y;
 			placedFrame.artContainer.removeAllChildren();
@@ -297,6 +305,7 @@ function handleArtLoad(event) {
 			didPlace = true;
 			bmpc.scaleX = bmpc.scaleY = placedFrame.artScale;
 			createjs.Tween.get(placedFrame.bmp).to({scaleY: h * 0.00553}, 100);
+			
 			for(var i = 0; i < frames.length; i++) {
 				if(i != placedFrameIndex) {
 					createjs.Tween.get(frames[i].frameContainer).to({x:300, y:900, scaleX:0.25, scaleY:0.25}, 600, createjs.Ease.quadOut);
@@ -305,14 +314,15 @@ function handleArtLoad(event) {
 				}
 			}
 
-			selectFrame();
+			
+			selectFrame(ao, placedFrame);
 
 		}
 
 
 		//if(!didPlace) {
-			this.rotation = 0;
-			createjs.Tween.get(this).to({x:this.origX, y:this.origY, rotation:0, override:true}, 300, createjs.Ease.quadOut);
+		this.rotation = 0;
+		createjs.Tween.get(this).to({x:this.origX, y:this.origY, rotation:0, override:true}, 300, createjs.Ease.quadOut);
 		//}
 
 		update = true;

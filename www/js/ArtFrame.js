@@ -1,11 +1,13 @@
 
 (function() {
 
-	var ArtFrame = function(bmp) {
+	var ArtFrame = function(bmp, frameType) {
 		
 		var t = this;
 
 		t.bmp = bmp;
+
+		t.frameType = frameType;
 		
 		t.frameContainer = new createjs.Container();
 		t.frameContainer.addChild(t.bmp);
