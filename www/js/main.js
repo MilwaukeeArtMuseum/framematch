@@ -37,11 +37,6 @@ function init() {
 	stage.enableMouseOver(10);
 	stage.mouseMoveOutside = true; // keep tracking the mouse even when it leaves the canvas
 
-	// load the source image:
-	//var image = new Image();
-	//image.src = "img/image.png";
-	//image.onload = handleImageLoad;
-
 
 	var bg = new createjs.Shape();
 	bg.graphics.beginFill("#ddd");
@@ -336,5 +331,5 @@ function handleArtLoad(event) {
 
 function handleArtComplete(event) {
 	stage.update();
-	//objects[0].artistName;
+	
 }
