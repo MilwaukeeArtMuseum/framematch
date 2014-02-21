@@ -2,6 +2,9 @@ var canvas, stage;
 
 var mouseTarget;	// the display object currently under the mouse, or being dragged
 var dragStarted;	// indicates whether we are currently in a drag operation
+
+var dragging = false;
+
 var offset;
 var update = true;
 
@@ -16,6 +19,8 @@ var p = this;
 var loadManifest = [];
 var audioLoader;
 
+var singleView;
+
 
 function init() {
 
@@ -23,6 +28,7 @@ function init() {
 		document.getElementById("header").style.display = "none";
 	}
 	document.getElementById("loader").className = "loader";
+	
 	// create stage and point it to the canvas:
 	canvas = document.getElementById("testCanvas");
 
@@ -37,30 +43,71 @@ function init() {
 	stage.enableMouseOver(10);
 	stage.mouseMoveOutside = true; // keep tracking the mouse even when it leaves the canvas
 
-
+	// setup background
 	var bg = new createjs.Shape();
 	bg.graphics.beginFill("#ddd");
 	bg.graphics.drawRect(0,0,1024,768);
 	bg.graphics.endFill();
+	
+	createFrameBox();
+	createArtBox();
+	
+	stage.addChild(bg, frameBox, artBox);
+	
+	loadArt();
+	loadFrames();
 
-	artBox = new createjs.Container();
-	artBox.x = 20;
-	artBox.y = 20;
+	createjs.Ticker.addEventListener("tick", stage);
+	createjs.Ticker.setFPS(30);
 
+	setupSingleView();
+	
+	stage.update();
+	
+
+}
+
+function createFrameBox() {
 	frameBox = new createjs.Container();
 	frameBox.x = 190;
 	frameBox.y = 100;
+}
 
-	stage.addChild(bg, frameBox, artBox);
+function createArtBox() {
+	artBox = new createjs.Container();
+	artBox.x = 20;
+	artBox.y = 20;
 
 	var artBoxShape = new createjs.Shape();
 	artBoxShape.graphics.beginFill("#eee");
 	artBoxShape.graphics.drawRect(0,0,100,100);
 	artBoxShape.graphics.endFill();
 	
-	artBox.addChild(artBoxShape);
+	artBox.addChild(artBoxShape);	
+
+}
+
+function loadFrames() {
+
+	var frameLoader = new createjs.LoadQueue(true);
+
+	frameLoader.on("fileload", handleFrameLoad, this);
+	frameLoader.on("complete", handleFrameComplete, this);
+
+	var frameManifest = [
+        {src:"img/frames/frame_kinglouis.png", id:"frame_kinglouis"},
+        {src:"img/frames/frame_narrow.png", id:"frame_narrow"},
+        {src:"img/frames/frame_reverse.png", id:"frame_reverse"},
+        {src:"img/frames/frame_cassetta.png", id:"frame_cassetta"}
+    ];
+
+    frameLoader.loadManifest(frameManifest);
+}
+
+function loadArt() {
 
 	// on preloading: http://stackoverflow.com/questions/17268466/how-to-reference-image-preloaded-in-preloadjs
+
 	var queue = new createjs.LoadQueue(true);
 
 	queue.on("fileload", handleArtLoad, this);
@@ -85,28 +132,16 @@ function init() {
 
 	});
 
-	// graphics.f().dr().ef();
-
-	var frameLoader = new createjs.LoadQueue(true);
-
-	frameLoader.on("fileload", handleFrameLoad, this);
-	frameLoader.on("complete", handleFrameComplete, this);
-
-	var frameManifest = [
-        {src:"img/frames/frame_kinglouis.png", id:"frame_kinglouis"},
-        {src:"img/frames/frame_narrow.png", id:"frame_narrow"},
-        {src:"img/frames/frame_reverse.png", id:"frame_reverse"},
-        {src:"img/frames/frame_cassetta.png", id:"frame_cassetta"}
-    ];
-
-    frameLoader.loadManifest(frameManifest);
-
-	stage.update();
-	createjs.Ticker.addEventListener("tick", stage);
-	createjs.Ticker.setFPS(30);
-
 }
 
+function setupSingleView() {
+	singleView = new createjs.Container();
+	
+	singleView.commentBox = new createjs.Container();
+	singleView.addChild(singleView.commentBox);
+	stage.addChild(singleView);
+
+}
 
 function handleAudioLoad(event) {
 	console.log("Audio Loaded");
@@ -120,10 +155,11 @@ function handleAudioComplete(event) {
 function selectFrame(art, frame) {
 	
 	var audioPath = art.audio[frame.frameType];
+	var comment = art.comment[frame.frameType];
 
 	console.log("You put the " + art.artistName + " inside of the " + frame.frameType);
 	console.log("Playing... " + audioPath);
-	console.log("Commentary: " + art.comment[frame.frameType]);
+	console.log("Commentary: " + comment);
  	createjs.Sound.alternateExtensions = ["mp3"];
 	audioLoader = new createjs.LoadQueue(true);
 	audioLoader.installPlugin(createjs.Sound);
@@ -131,7 +167,12 @@ function selectFrame(art, frame) {
 	audioLoader.on("complete", handleAudioComplete, this);
 	audioLoader.loadFile({id:"mySound", src:"audio/"+audioPath});
 
-
+	var text = new createjs.Text(comment, "20px Arial", "#ff7700"); 
+	text.x = 100; 
+	text.y = 200;
+	text.textBaseline = "alphabetic";
+	
+	singleView.commentBox.addChild(text);
 
 }
 
@@ -184,6 +225,14 @@ function handleFrameLoad(event){
 	af.setScale(scale);
 	af.setXY(xy);
 	af.setPoint(ap);
+	
+	/*
+	af.frameContainer.on("rollover", function(evt) {
+		if(dragging) {
+			createjs.Tween.get(this).to({scaleX:1.25, scaleY:1.25}, 300, createjs.Ease.quadOut);
+		}
+	});
+	*/
 
 	frames.push(af);
 	
@@ -238,6 +287,9 @@ function handleArtLoad(event) {
 		});
 		console.log("MouseDown");
 		createjs.Tween.get(this).to({scaleX:0.5, scaleY:0.5}, 500, createjs.Ease.elasticOut); //circOut is really nice
+
+		dragging = true;
+
 	});
 	
 	// the pressmove event is dispatched when the mouse moves after a mousedown on the target until the mouse is released.
@@ -262,6 +314,8 @@ function handleArtLoad(event) {
 	
 	bmp.on("pressup", function(evt) {
 		
+		dragging = false;
+
 		this.scaleX = this.scaleY = 0.35;
 		createjs.Tween.removeTweens(this);
 		var didPlace = false;
