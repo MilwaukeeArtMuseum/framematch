@@ -123,6 +123,7 @@ function selectFrame(art, frame) {
 
 	console.log("You put the " + art.artistName + " inside of the " + frame.frameType);
 	console.log("Playing... " + audioPath);
+	console.log("Commentary: " + art.comment[frame.frameType]);
  	createjs.Sound.alternateExtensions = ["mp3"];
 	audioLoader = new createjs.LoadQueue(true);
 	audioLoader.installPlugin(createjs.Sound);

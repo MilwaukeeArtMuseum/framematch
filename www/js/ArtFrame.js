@@ -33,15 +33,18 @@
 		this.artContainer.x = this.artPoint.x;
 		this.artContainer.y = this.artPoint.y;
 	};
+	
 	ArtFrame.prototype.setScale = function(scale) {
 		this.artScale = scale;
 	}
+	
 	ArtFrame.prototype.setXY = function(pt) {
 		
 		this.frameContainer.setTransform(pt.x,pt.y);
 		this.originalX = pt.x;
 		this.originalY = pt.y;
 	};
+	
 	ArtFrame.prototype.setFrameHeight = function(height) {
 		this.frameContainer.scaleY = height;
 	}
