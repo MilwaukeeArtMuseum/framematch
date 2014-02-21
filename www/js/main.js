@@ -1,3 +1,4 @@
+
 var canvas, stage;
 
 var mouseTarget;	// the display object currently under the mouse, or being dragged
@@ -21,6 +22,15 @@ var audioLoader;
 
 var singleView;
 
+
+
+State = {
+			INIT:"state_init",
+			SELECTION:"state_art_select",
+			SINGLE_VIEW:"state_single_view"
+		};
+
+var currentState = State.INIT;
 
 function init() {
 
@@ -139,7 +149,19 @@ function setupSingleView() {
 	
 	singleView.commentBox = new createjs.Container();
 	singleView.addChild(singleView.commentBox);
-	stage.addChild(singleView);
+
+	
+
+	
+
+	var text = new createjs.Text("hello", "20px Arial", "#ff7700"); 
+	text.x = 100; 
+	text.y = 200;
+	text.textBaseline = "alphabetic";
+	singleView.commentText = text;
+	singleView.commentBox.addChild(singleView.commentText);
+
+	
 
 }
 
@@ -167,13 +189,15 @@ function selectFrame(art, frame) {
 	audioLoader.on("complete", handleAudioComplete, this);
 	audioLoader.loadFile({id:"mySound", src:"audio/"+audioPath});
 
-	var text = new createjs.Text(comment, "20px Arial", "#ff7700"); 
-	text.x = 100; 
-	text.y = 200;
-	text.textBaseline = "alphabetic";
-	
-	singleView.commentBox.addChild(text);
+	singleView.commentText.text = comment;
 
+	stage.addChild(singleView);
+
+}
+
+function exitSingleView() {
+	stage.removeChild(singleView);
+	currenState = State.SELECTION;
 }
 
 function handleFrameLoad(event){
@@ -277,6 +301,11 @@ function handleArtLoad(event) {
 
 	bmp.on("mousedown", function(evt) {
 		//this.parent.addChild(this);
+
+		if(currentState == State.SINGLE_VIEW) {
+			exitSingleView();
+		}
+
 		createjs.Sound.stop("mySound");
 		this.offset = {x:this.x-evt.stageX, y:this.y-evt.stageY};
 		this.rotation = -5;
@@ -364,7 +393,7 @@ function handleArtLoad(event) {
 				}
 			}
 
-			
+			currentState = State.SINGLE_VIEW;
 			selectFrame(ao, placedFrame);
 
 		}
