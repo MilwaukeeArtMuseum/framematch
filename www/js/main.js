@@ -149,11 +149,15 @@ function setupSingleView() {
 	singleView.commentBox = new createjs.Container();
 	singleView.addChild(singleView.commentBox);
 
-	var text = new createjs.Text("hello", "20px Arial", "#ff7700"); 
-	text.x = 100; 
-	text.y = 200;
+	var text = new createjs.Text("hello", "20px Arial", "#333"); 
+	text.x = 200; 
+	text.y = 500;
+	text.lineWidth = 750;
 	text.textBaseline = "alphabetic";
+	text.textAlign = "left";
+	text.s
 	singleView.commentText = text;
+
 	singleView.commentBox.addChild(singleView.commentText);
 
 }
@@ -213,11 +217,9 @@ function handleFrameLoad(event){
 
 	switch(item.id) {
 		case "frame_reverse":
-			
 			scale = 1.208;
 			ap = new createjs.Point(16,16);
 			xy = new createjs.Point(0,310)
-
 			frameType = ArtFrame.FRAME_TYPES.FRAME_REVERSE;
 		break;
 		case "frame_narrow":

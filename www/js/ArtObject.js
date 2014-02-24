@@ -41,7 +41,7 @@
 	    t.comment[ArtFrame.FRAME_TYPES.FRAME_NARROW] = o.commentary.frame_narrow;
 	    t.comment[ArtFrame.FRAME_TYPES.CASSETTA] = o.commentary.frame_cassetta;
 
-	    // add custom setup logic here.
+	    
 	}
 	 
 	window.ArtObject = ArtObject;

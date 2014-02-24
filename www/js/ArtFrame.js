@@ -20,8 +20,6 @@
 		t.artContainer = new createjs.Container();
 		
 		t.frameContainer.addChild(t.artContainer);
-		//t.artContainer.x = -t.bmp.regX;
-		//t.artContainer.y = -t.bmp.regY;
 
 		t.originalX = 0;
 		t.originalY = 0;
