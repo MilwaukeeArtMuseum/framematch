@@ -3,7 +3,7 @@
 	var ArtFrame = function(bmp, frameType) {
 		
 		var t = this;
-
+		t.artPoint = null;
 		t.bmp = bmp;
 
 		t.frameType = frameType;
@@ -34,7 +34,7 @@
 
 	ArtFrame.prototype.setPoint = function(pt) {
 		this.artPoint = pt;
-		//this.artContainer.x = this.artPoint.x;
+		this.artContainer.x = this.artPoint.x;
 		this.artContainer.y = this.artPoint.y;
 	}
 	

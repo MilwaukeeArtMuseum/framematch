@@ -215,7 +215,7 @@ function handleFrameLoad(event){
 		case "frame_reverse":
 			
 			scale = 1.208;
-			ap = new createjs.Point(31,16);
+			ap = new createjs.Point(16,16);
 			xy = new createjs.Point(0,310)
 
 			frameType = ArtFrame.FRAME_TYPES.FRAME_REVERSE;
@@ -223,19 +223,19 @@ function handleFrameLoad(event){
 		case "frame_narrow":
 			xy = new createjs.Point(400,20);
 			scale = 1.249;
-			ap = new createjs.Point(8,3);
+			ap = new createjs.Point(4,3);
 			frameType = ArtFrame.FRAME_TYPES.FRAME_NARROW;
 		break;
 		case "frame_cassetta":
 			xy = new createjs.Point(390, 310);
 			scale = 1.098;
-			ap = new createjs.Point(43,19);
+			ap = new createjs.Point(21,19);
 			frameType = ArtFrame.FRAME_TYPES.CASSETTA;
 		break;
 		case "frame_kinglouis":
 			xy = new createjs.Point(0,0);
 			scale = 1.09;
-			ap = new createjs.Point(45,19);
+			ap = new createjs.Point(22,19);
 			frameType = ArtFrame.FRAME_TYPES.KING_LOUIS;
 		break;
 	}
@@ -380,7 +380,7 @@ function handleArtLoad(event) {
 			didPlace = true;
 			bmpc.scaleX = bmpc.scaleY = placedFrame.artScale;
 
-			// might have to calculate per frame type --------VVVVVV
+			// might have to calculate per frame type --------VVV
 			createjs.Tween.get(placedFrame.bmp).to({scaleY: h * 0.00568}, 100);
 			
 			for(var i = 0; i < frames.length; i++) {
