@@ -16,13 +16,12 @@ var objects = [];
 var frames = [];
 var p = this;
 
-
 var loadManifest = [];
 var audioLoader;
 
 var singleView;
 
-
+var soundEnabled = false;
 
 State = {
 			INIT:"state_init",
@@ -75,12 +74,13 @@ function init() {
 	stage.update();
 	
 
+
 }
 
 function createFrameBox() {
 	frameBox = new createjs.Container();
-	frameBox.x = 190;
-	frameBox.y = 100;
+	frameBox.x = 220;
+	frameBox.y = 150;
 }
 
 function createArtBox() {
@@ -93,8 +93,7 @@ function createArtBox() {
 	artBoxShape.graphics.drawRect(0,0,100,100);
 	artBoxShape.graphics.endFill();
 	
-	artBox.addChild(artBoxShape);	
-
+	//artBox.addChild(artBoxShape);	
 }
 
 function loadFrames() {
@@ -150,10 +149,6 @@ function setupSingleView() {
 	singleView.commentBox = new createjs.Container();
 	singleView.addChild(singleView.commentBox);
 
-	
-
-	
-
 	var text = new createjs.Text("hello", "20px Arial", "#ff7700"); 
 	text.x = 100; 
 	text.y = 200;
@@ -161,13 +156,14 @@ function setupSingleView() {
 	singleView.commentText = text;
 	singleView.commentBox.addChild(singleView.commentText);
 
-	
-
 }
 
 function handleAudioLoad(event) {
 	console.log("Audio Loaded");
-	var instance = createjs.Sound.play("mySound");
+	
+	if(soundEnabled) {
+		var instance = createjs.Sound.play("mySound");
+	}
 }
 
 function handleAudioComplete(event) {
@@ -211,52 +207,53 @@ function handleFrameLoad(event){
  	
 	var bmp = new createjs.Bitmap(image);
 	
-	//bmp.regX = w/2;
-	//bmp.regY = w/2;
-
 	var ap, xy, scale, frameType;
+	
+	ap = new createjs.Point(0,0);
 
 	switch(item.id) {
 		case "frame_reverse":
-			xy = new createjs.Point(0,310)
+			
 			scale = 1.208;
-			ap = new createjs.Point(16,16);
+			ap = new createjs.Point(31,16);
+			xy = new createjs.Point(0,310)
+
 			frameType = ArtFrame.FRAME_TYPES.FRAME_REVERSE;
 		break;
 		case "frame_narrow":
 			xy = new createjs.Point(400,20);
 			scale = 1.249;
-			ap = new createjs.Point(4,4);
+			ap = new createjs.Point(8,3);
 			frameType = ArtFrame.FRAME_TYPES.FRAME_NARROW;
 		break;
 		case "frame_cassetta":
 			xy = new createjs.Point(390, 310);
-			scale = 1.096;
-			ap = new createjs.Point(22,19);
+			scale = 1.098;
+			ap = new createjs.Point(43,19);
 			frameType = ArtFrame.FRAME_TYPES.CASSETTA;
 		break;
 		case "frame_kinglouis":
 			xy = new createjs.Point(0,0);
 			scale = 1.09;
-			ap = new createjs.Point(22,18);
+			ap = new createjs.Point(45,19);
 			frameType = ArtFrame.FRAME_TYPES.KING_LOUIS;
 		break;
 	}
-	
+
+	// so art is placed at "frame origin"
+	bmp.regX = ap.x;
+	bmp.regY = ap.y;
+
+	// account for registration / art point
+	xy.x += ap.x;
+	xy.y += ap.y; 
+
 	var af = new ArtFrame(bmp, frameType);
 	var fc = af.frameContainer;
 
 	af.setScale(scale);
 	af.setXY(xy);
 	af.setPoint(ap);
-	
-	/*
-	af.frameContainer.on("rollover", function(evt) {
-		if(dragging) {
-			createjs.Tween.get(this).to({scaleX:1.25, scaleY:1.25}, 300, createjs.Ease.quadOut);
-		}
-	});
-	*/
 
 	frames.push(af);
 	
@@ -285,7 +282,7 @@ function handleArtLoad(event) {
 	bmp.scaleY = 0.35;
 
 	bmp.regX = w/2;
-	bmp.regY = w/2;
+	bmp.regY = h/2;
 	
 	var b = artBox.getBounds();
 
@@ -301,7 +298,7 @@ function handleArtLoad(event) {
 
 	bmp.on("mousedown", function(evt) {
 		//this.parent.addChild(this);
-
+		
 		if(currentState == State.SINGLE_VIEW) {
 			exitSingleView();
 		}
@@ -310,7 +307,6 @@ function handleArtLoad(event) {
 		this.offset = {x:this.x-evt.stageX, y:this.y-evt.stageY};
 		this.rotation = -5;
 		$.each(frames, function() {
-			console.log("frameit" + this.originalX);
 			createjs.Tween.get(this.frameContainer).to({x: this.originalX, y: this.originalY, scaleX:1, scaleY:1}, 300);
 			this.artContainer.removeAllChildren();
 		});
@@ -318,6 +314,8 @@ function handleArtLoad(event) {
 		createjs.Tween.get(this).to({scaleX:0.5, scaleY:0.5}, 500, createjs.Ease.elasticOut); //circOut is really nice
 
 		dragging = true;
+
+		ArtFrame.scaleSetup();
 
 	});
 	
@@ -375,15 +373,15 @@ function handleArtLoad(event) {
 			
 			var bmpc = new createjs.Bitmap(this.image);
 			
-			bmpc.x = placedFrame.artPoint.x;
-			bmpc.y = placedFrame.artPoint.y;
 			placedFrame.artContainer.removeAllChildren();
 			bmpc.alpha = 0;
 			createjs.Tween.get(bmpc).to({alpha:1}, 1000, createjs.Ease.quadOut);
 			placedFrame.artContainer.addChild(bmpc);
 			didPlace = true;
 			bmpc.scaleX = bmpc.scaleY = placedFrame.artScale;
-			createjs.Tween.get(placedFrame.bmp).to({scaleY: h * 0.00553}, 100);
+
+			// might have to calculate per frame type --------VVVVVV
+			createjs.Tween.get(placedFrame.bmp).to({scaleY: h * 0.00568}, 100);
 			
 			for(var i = 0; i < frames.length; i++) {
 				if(i != placedFrameIndex) {
