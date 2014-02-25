@@ -151,14 +151,20 @@ function setupSingleView() {
 
 	var text = new createjs.Text("hello", "20px Arial", "#333"); 
 	text.x = 200; 
-	text.y = 500;
+	text.y = 530;
 	text.lineWidth = 750;
 	text.textBaseline = "alphabetic";
 	text.textAlign = "left";
 	text.s
 	singleView.commentText = text;
+	var commentBack = new createjs.Shape();
+	var padding = 20;
+	commentBack.graphics.beginFill("#ccc").drawRect(text.x - padding,
+													text.y-text.getMeasuredLineHeight()-padding, 
+													text.lineWidth+padding, 
+													200+padding).endFill();
 
-	singleView.commentBox.addChild(singleView.commentText);
+	singleView.commentBox.addChild(commentBack, singleView.commentText);
 
 }
 
