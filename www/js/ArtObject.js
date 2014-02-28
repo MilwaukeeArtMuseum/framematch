@@ -18,12 +18,12 @@
 
 	    t.artistName = o.artistName;
 	    t.artistOrigin = o.artistOrigin;
-	    t.artistLifespan = o.artistLifespan;
+	    t.artistLifeSpan = o.artistLifeSpan;
 	    t.artTitle = o.artTitle;
 	    t.artDate = o.artDate;
 	    t.artMedium = o.artMedium;
 	    t.artDimensions = o.artDimensions;
-	    t.acquisitionDetails = o.aquisitionDetails;
+	    t.acquisitionDetails = o.acquisitionDetails;
 	    t.artId = o.artId;
 	    t.photoCredit = o.photoCredit;
 	    t.artImageURL = o.artImage;
@@ -43,7 +43,14 @@
 
 	    
 	}
-	 
-	window.ArtObject = ArtObject;
 
+	p.getHTMLDesc = function() {
+		var t = this;
+		
+		return desc;
+	}
+	 
+	window.ArtObject = ArtObject
+;g	
+	
 }());

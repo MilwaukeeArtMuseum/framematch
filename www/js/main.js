@@ -20,7 +20,8 @@ var audioLoader;
 
 var singleView;
 
-var soundEnabled = true;
+var soundEnabled = false;
+var artistInfo;
 
 State = {
 			INIT:"state_init",
@@ -76,7 +77,7 @@ function init() {
 function createFrameBox() {
 	frameBox = new createjs.Container();
 	frameBox.x = 220;
-	frameBox.y = 150;
+	frameBox.y = 90;
 }
 
 function createArtBox() {
@@ -151,7 +152,7 @@ function setupSingleView() {
 	text.lineWidth = 750;
 	text.textBaseline = "alphabetic";
 	text.textAlign = "left";
-	text.s
+	//text.s
 	singleView.commentText = text;
 	var commentBack = new createjs.Shape();
 	var padding = 20;
@@ -161,6 +162,45 @@ function setupSingleView() {
 													200+padding).endFill();
 
 	singleView.commentBox.addChild(commentBack, singleView.commentText);
+	
+	singleView.artCredit = new createjs.Container();
+
+	var creditBG = new createjs.Shape();
+	creditBG.graphics.beginFill('#fff').drawRect(0,0,350,250).endFill();	
+
+	
+	var artistInfo = new createjs.Text('',"14px Arial bold", "#333");
+	var objectTitle = new createjs.Text('',"14px Arial bold", "#333");
+	var objectDetails = new createjs.Text('', "14px Arial", "#333");
+
+
+	var cardPadding = 20;
+	artistInfo.x = cardPadding;
+	artistInfo.y = cardPadding;
+	artistInfo.lineWidth = 350;
+
+	objectTitle.x = cardPadding;
+	objectTitle.y = 16 + cardPadding;
+	objectTitle.lineWidth = 320;
+
+	objectDetails.x = cardPadding;
+	objectDetails.y = 60 + cardPadding;
+	objectDetails.lineHeight = 20;
+	objectDetails.lineWidth = 350;
+	
+
+	singleView.artCredit.artistInfo = artistInfo;
+	singleView.artCredit.objectTitle = objectTitle;
+	singleView.artCredit.objectDetails = objectDetails;
+
+	singleView.artCredit.addChild(creditBG, artistInfo, objectTitle, objectDetails);
+	
+
+	singleView.artCredit.x = 600;
+	singleView.artCredit.y = 100;
+	
+	singleView.addChild(singleView.artCredit);
+	
 	singleView.visible = false;
 }
 
@@ -192,9 +232,20 @@ function selectFrame(art, frame) {
 	audioLoader.loadFile({id:"mySound", src:"audio/"+audioPath});
 
 	singleView.commentText.text = comment;
+
+	singleView.artCredit.artistInfo.text = art.artistName + ' (' + 
+		                                   art.artistOrigin + ', ' + 
+										   art.artistLifeSpan + ')';
+
+	singleView.artCredit.objectTitle.text = art.artTitle;
+	singleView.artCredit.objectDetails.text = art.artMedium + "\n" +
+											  art.artDimensions + "\n" +
+											  art.acquisitionDetails + "\n" +
+											  art.artId + "\n" +
+											  "PHOTO CREDIT: " + art.photoCredit;
+
 	singleView.alpha = 0;
 	singleView.visible = true;
-
 	createjs.Tween.get(singleView).to({alpha:1}, 400);
 
 }
@@ -279,13 +330,13 @@ function handleArtLoad(event) {
 	var w = image.width;
 	var h = image.height;
  	var ao = item.data.artObject;
-
+ 	var smallScale = 0.3;
  	console.log(ao);
 
 	var bmp = new createjs.Bitmap(image);
 	
-	bmp.scaleX = 0.35;
-	bmp.scaleY = 0.35;
+	bmp.scaleX = smallScale;
+	bmp.scaleY = smallScale;
 
 	bmp.regX = w/2;
 	bmp.regY = h/2;
@@ -327,9 +378,10 @@ function handleArtLoad(event) {
 	
 	// the pressmove event is dispatched when the mouse moves after a mousedown on the target until the mouse is released.
 	bmp.on("pressmove", function(evt) {
+		
 		this.x = evt.stageX+ this.offset.x;
 		this.y = evt.stageY+ this.offset.y;
-
+		
 		for(var i = 0; i < frames.length; i ++) {
 			var f = frames[i];
 			var p = f.bmp.globalToLocal(stage.mouseX, stage.mouseY);//f.globalToLocal(stage.mouseX, stage.mouseY);
@@ -357,7 +409,7 @@ function handleArtLoad(event) {
 	});
 
 	bmp.on("rollout", function(evt) {
-		this.scaleX = this.scaleY = 0.35;
+		this.scaleX = this.scaleY = smallScale;
 		update = true;
 	});
 	
@@ -365,7 +417,7 @@ function handleArtLoad(event) {
 		
 		dragging = false;
 
-		this.scaleX = this.scaleY = 0.35;
+		this.scaleX = this.scaleY = smallScale;
 		createjs.Tween.removeTweens(this);
 		var didPlace = false;
 		
