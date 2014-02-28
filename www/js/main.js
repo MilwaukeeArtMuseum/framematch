@@ -1,4 +1,3 @@
-
 var canvas, stage;
 
 var mouseTarget;	// the display object currently under the mouse, or being dragged
@@ -21,7 +20,7 @@ var audioLoader;
 
 var singleView;
 
-var soundEnabled = false;
+var soundEnabled = true;
 
 State = {
 			INIT:"state_init",
@@ -60,8 +59,9 @@ function init() {
 	
 	createFrameBox();
 	createArtBox();
-	
-	stage.addChild(bg, frameBox, artBox);
+	setupSingleView();
+
+	stage.addChild(bg, singleView, frameBox, artBox);
 	
 	loadArt();
 	loadFrames();
@@ -69,12 +69,8 @@ function init() {
 	createjs.Ticker.addEventListener("tick", stage);
 	createjs.Ticker.setFPS(30);
 
-	setupSingleView();
-	
 	stage.update();
 	
-
-
 }
 
 function createFrameBox() {
@@ -165,7 +161,7 @@ function setupSingleView() {
 													200+padding).endFill();
 
 	singleView.commentBox.addChild(commentBack, singleView.commentText);
-
+	singleView.visible = false;
 }
 
 function handleAudioLoad(event) {
@@ -196,13 +192,15 @@ function selectFrame(art, frame) {
 	audioLoader.loadFile({id:"mySound", src:"audio/"+audioPath});
 
 	singleView.commentText.text = comment;
+	singleView.alpha = 0;
+	singleView.visible = true;
 
-	stage.addChild(singleView);
+	createjs.Tween.get(singleView).to({alpha:1}, 400);
 
 }
 
 function exitSingleView() {
-	stage.removeChild(singleView);
+	singleView.visible = false;
 	currenState = State.SELECTION;
 }
 
@@ -319,7 +317,7 @@ function handleArtLoad(event) {
 			this.artContainer.removeAllChildren();
 		});
 		console.log("MouseDown");
-		createjs.Tween.get(this).to({scaleX:0.5, scaleY:0.5}, 500, createjs.Ease.elasticOut); //circOut is really nice
+		createjs.Tween.get(this).to({scaleX:1, scaleY:1}, 500, createjs.Ease.elasticOut); //circOut is really nice
 
 		dragging = true;
 
@@ -331,6 +329,22 @@ function handleArtLoad(event) {
 	bmp.on("pressmove", function(evt) {
 		this.x = evt.stageX+ this.offset.x;
 		this.y = evt.stageY+ this.offset.y;
+
+		for(var i = 0; i < frames.length; i ++) {
+			var f = frames[i];
+			var p = f.bmp.globalToLocal(stage.mouseX, stage.mouseY);//f.globalToLocal(stage.mouseX, stage.mouseY);
+
+			if(f.bmp.hitTest(p.x, p.y)) {
+				if(!f.isGlowing) {
+					f.glow();
+				}
+			} else {
+				if(f.isGlowing) {
+					f.endGlow();
+				}
+			}
+
+		}
 		
 		// indicate that the stage should be updated on the next tick:
 		update = true;
@@ -369,6 +383,7 @@ function handleArtLoad(event) {
 				didPlace = true;
 				placedFrameIndex = i;
 				placedFrame = f;
+				f.endGlow();
 			}
 
 		}

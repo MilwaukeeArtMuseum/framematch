@@ -1,5 +1,5 @@
 (function() {
- 
+ 	
 	var ArtObject = function(objectDefinition) {
 	  this.initialize(objectDefinition);
 	}

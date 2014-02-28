@@ -1,10 +1,13 @@
 (function() {
-
+	
 	var ArtFrame = function(bmp, frameType) {
 		
 		var t = this;
 		t.artPoint = null;
 		t.bmp = bmp;
+	
+		t.isGlowing = false;
+			
 
 		t.frameType = frameType;
 		
@@ -46,7 +49,18 @@
 		this.originalX = pt.x;
 		this.originalY = pt.y;
 	}
-	
+	ArtFrame.prototype.glow = function() {
+		if(!this.isGlowing) {
+			this.isGlowing = true;
+			createjs.Tween.get(this.frameContainer).to({scaleX: 1.05, scaleY: 1.05, x:this.originalX-8, y:this.originalY-8}, 200);
+		}
+	}
+	ArtFrame.prototype.endGlow = function() {
+		if(this.isGlowing) {
+			this.isGlowing = false;
+			createjs.Tween.get(this.frameContainer).to({scaleX: 1, scaleY: 1, x: this.originalX, y: this.originalY}, 100);
+		}
+	}
 	ArtFrame.prototype.setFrameHeight = function(height) {
 		this.frameContainer.scaleY = height;
 	}
@@ -58,7 +72,7 @@
 						   }
 
 	ArtFrame.artframes = [];
-	ArtFrame.numFrames = 0;
+	ArtFrame.numFrames = 0;	
 
 	ArtFrame.scaleSetup = function() {
 		var f = ArtFrame.artframes;
