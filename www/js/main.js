@@ -68,10 +68,32 @@ function init() {
 	loadFrames();
 
 	createjs.Ticker.addEventListener("tick", stage);
+	createjs.Ticker.addEventListener("tick", tickFunc);
 	createjs.Ticker.setFPS(30);
 
 	stage.update();
 	
+}
+
+function tickFunc() {
+
+	if(dragging) {
+		for(var i = 0; i < frames.length; i ++) {
+			var f = frames[i];
+			var p = f.bmp.globalToLocal(stage.mouseX, stage.mouseY);
+
+			if(f.bmp.hitTest(p.x, p.y)) {
+				//if(!f.isGlowing) {
+					f.glow();
+				//}
+			} else {
+				//if(f.isGlowing) {
+					f.endGlow();
+				//}
+			}
+
+		}
+	}
 }
 
 function createFrameBox() {
@@ -141,21 +163,25 @@ function loadArt() {
 }
 
 function setupSingleView() {
+
 	singleView = new createjs.Container();
 	
 	singleView.commentBox = new createjs.Container();
 	singleView.addChild(singleView.commentBox);
 
 	var text = new createjs.Text("hello", "20px Arial", "#333"); 
+	
 	text.x = 200; 
-	text.y = 530;
+	text.y = 470;
 	text.lineWidth = 750;
 	text.textBaseline = "alphabetic";
 	text.textAlign = "left";
 	//text.s
 	singleView.commentText = text;
+	
 	var commentBack = new createjs.Shape();
 	var padding = 20;
+	
 	commentBack.graphics.beginFill("#ccc").drawRect(text.x - padding,
 													text.y-text.getMeasuredLineHeight()-padding, 
 													text.lineWidth+padding, 
@@ -382,21 +408,7 @@ function handleArtLoad(event) {
 		this.x = evt.stageX+ this.offset.x;
 		this.y = evt.stageY+ this.offset.y;
 		
-		for(var i = 0; i < frames.length; i ++) {
-			var f = frames[i];
-			var p = f.bmp.globalToLocal(stage.mouseX, stage.mouseY);//f.globalToLocal(stage.mouseX, stage.mouseY);
-
-			if(f.bmp.hitTest(p.x, p.y)) {
-				if(!f.isGlowing) {
-					f.glow();
-				}
-			} else {
-				if(f.isGlowing) {
-					f.endGlow();
-				}
-			}
-
-		}
+		
 		
 		// indicate that the stage should be updated on the next tick:
 		update = true;
@@ -471,11 +483,8 @@ function handleArtLoad(event) {
 
 		}
 
-
-		//if(!didPlace) {
 		this.rotation = 0;
 		createjs.Tween.get(this).to({x:this.origX, y:this.origY, rotation:0, override:true}, 300, createjs.Ease.quadOut);
-		//}
 
 		update = true;
 

@@ -8,7 +8,6 @@
 	
 		t.isGlowing = false;
 			
-
 		t.frameType = frameType;
 		
 		t.frameContainer = new createjs.Container();
@@ -52,13 +51,13 @@
 	ArtFrame.prototype.glow = function() {
 		if(!this.isGlowing) {
 			this.isGlowing = true;
-			createjs.Tween.get(this.frameContainer).to({scaleX: 1.05, scaleY: 1.05, x:this.originalX-8, y:this.originalY-8}, 200);
+			createjs.Tween.get(this.frameContainer).to({scaleX: 1.05, scaleY: 1.05, x:this.originalX-8, y:this.originalY-8, override:true}, 200);
 		}
 	}
 	ArtFrame.prototype.endGlow = function() {
 		if(this.isGlowing) {
 			this.isGlowing = false;
-			createjs.Tween.get(this.frameContainer).to({scaleX: 1, scaleY: 1, x: this.originalX, y: this.originalY}, 100);
+			createjs.Tween.get(this.frameContainer).to({scaleX: 1, scaleY: 1, x: this.originalX, y: this.originalY, override:true}, 100);
 		}
 	}
 	ArtFrame.prototype.setFrameHeight = function(height) {

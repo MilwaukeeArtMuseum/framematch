@@ -51,6 +51,6 @@
 	}
 	 
 	window.ArtObject = ArtObject
-;g	
+;
 	
 }());
