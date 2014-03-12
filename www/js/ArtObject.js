@@ -40,14 +40,14 @@
 	    t.comment[ArtFrame.FRAME_TYPES.FRAME_REVERSE] = o.commentary.frame_reverse;
 	    t.comment[ArtFrame.FRAME_TYPES.FRAME_NARROW] = o.commentary.frame_narrow;
 	    t.comment[ArtFrame.FRAME_TYPES.CASSETTA] = o.commentary.frame_cassetta;
-
 	    
 	}
 
 	p.getHTMLDesc = function() {
-		var t = this;
 		
+		var t = this;
 		return desc;
+		
 	}
 	 
 	window.ArtObject = ArtObject

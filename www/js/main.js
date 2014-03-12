@@ -76,12 +76,12 @@ function init() {
 }
 
 function tickFunc() {
-
+	
 	if(dragging) {
 		for(var i = 0; i < frames.length; i ++) {
 			var f = frames[i];
+			
 			var p = f.bmp.globalToLocal(stage.mouseX, stage.mouseY);
-
 			if(f.bmp.hitTest(p.x, p.y)) {
 				//if(!f.isGlowing) {
 					f.glow();
@@ -91,9 +91,12 @@ function tickFunc() {
 					f.endGlow();
 				//}
 			}
-
+			
 		}
 	}
+
+	
+
 }
 
 function createFrameBox() {
@@ -192,7 +195,25 @@ function setupSingleView() {
 	singleView.artCredit = new createjs.Container();
 
 	var creditBG = new createjs.Shape();
-	creditBG.graphics.beginFill('#fff').drawRect(0,0,350,250).endFill();	
+	creditBG.graphics.beginFill('#fff').drawRect(0,0,350,250).endFill();
+
+	var backButton = new createjs.Container();
+	var backButtonBG = new createjs.Shape();
+	backButtonBG.graphics.beginFill("#aaa").drawRoundRect(-20, -20, 125, 75, 15).endFill();
+
+	var backButtonTXT = new createjs.Text('BACK', "30px Arial", "#333");
+
+	backButton.bg = backButtonBG;
+	backButton.txt = backButtonTXT;
+
+
+	backButton.addChild(backButtonBG, backButtonTXT);
+	backButton.y = 590;
+	backButton.x = 250;
+	singleView.backButton = backButton;	
+	backButton.on("mousedown", function(evt) {
+		exitSingleView();
+	});
 
 	
 	var artistInfo = new createjs.Text('',"14px Arial bold", "#333");
@@ -214,12 +235,12 @@ function setupSingleView() {
 	objectDetails.lineHeight = 20;
 	objectDetails.lineWidth = 350;
 	
-
+	
 	singleView.artCredit.artistInfo = artistInfo;
 	singleView.artCredit.objectTitle = objectTitle;
 	singleView.artCredit.objectDetails = objectDetails;
 
-	singleView.artCredit.addChild(creditBG, artistInfo, objectTitle, objectDetails);
+	singleView.artCredit.addChild(creditBG, artistInfo, objectTitle, objectDetails, backButton);
 	
 
 	singleView.artCredit.x = 600;
@@ -279,6 +300,14 @@ function selectFrame(art, frame) {
 function exitSingleView() {
 	singleView.visible = false;
 	currenState = State.SELECTION;
+	
+	/* was in mousedown */
+	$.each(frames, function() {
+		createjs.Tween.get(this.frameContainer).to({x: this.originalX, y: this.originalY, scaleX:1, scaleY:1}, 300);
+		this.artContainer.removeAllChildren();
+	});
+	ArtFrame.scaleSetup();
+	/* / was in mousedown */
 }
 
 function handleFrameLoad(event){
@@ -389,16 +418,18 @@ function handleArtLoad(event) {
 		createjs.Sound.stop("mySound");
 		this.offset = {x:this.x-evt.stageX, y:this.y-evt.stageY};
 		this.rotation = -5;
+		/*
 		$.each(frames, function() {
 			createjs.Tween.get(this.frameContainer).to({x: this.originalX, y: this.originalY, scaleX:1, scaleY:1}, 300);
 			this.artContainer.removeAllChildren();
 		});
+		*/
 		console.log("MouseDown");
 		createjs.Tween.get(this).to({scaleX:1, scaleY:1}, 500, createjs.Ease.elasticOut); //circOut is really nice
 
 		dragging = true;
 
-		ArtFrame.scaleSetup();
+		
 
 	});
 	

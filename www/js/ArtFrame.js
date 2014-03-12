@@ -11,6 +11,9 @@
 		t.frameType = frameType;
 		
 		t.frameContainer = new createjs.Container();
+
+		//t.frameContainer.on("rollover", function(evt) {console.log("MOUSEY MOUSEY");})
+		
 		t.frameContainer.addChild(t.bmp);
 		
 		t.frameTop = new createjs.Container();
