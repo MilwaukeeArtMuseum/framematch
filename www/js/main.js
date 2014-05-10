@@ -20,8 +20,11 @@ var audioLoader;
 
 var singleView;
 
-var soundEnabled = false;
+var soundEnabled = true;
 var artistInfo;
+
+var bgColor = "#734d73";
+var frameBg = "#a48ca4";
 
 State = {
 			INIT:"state_init",
@@ -54,7 +57,7 @@ function init() {
 
 	// setup background
 	var bg = new createjs.Shape();
-	bg.graphics.beginFill("#ddd");
+	bg.graphics.beginFill(bgColor);
 	bg.graphics.drawRect(0,0,1024,768);
 	bg.graphics.endFill();
 	
@@ -77,11 +80,13 @@ function init() {
 
 function tickFunc() {
 	
+
 	if(dragging) {
 		for(var i = 0; i < frames.length; i ++) {
 			var f = frames[i];
 			
 			var p = f.bmp.globalToLocal(stage.mouseX, stage.mouseY);
+			
 			if(f.bmp.hitTest(p.x, p.y)) {
 				//if(!f.isGlowing) {
 					f.glow();
@@ -126,10 +131,10 @@ function loadFrames() {
 	frameLoader.on("complete", handleFrameComplete, this);
 
 	var frameManifest = [
-        {src:"img/frames/frame_kinglouis.png", id:"frame_kinglouis"},
-        {src:"img/frames/frame_narrow.png", id:"frame_narrow"},
-        {src:"img/frames/frame_reverse.png", id:"frame_reverse"},
-        {src:"img/frames/frame_cassetta.png", id:"frame_cassetta"}
+        {src:"img/frames/kinglouis.png", id:"frame_kinglouis"},
+        {src:"img/frames/narrow.png", id:"frame_narrow"},
+        {src:"img/frames/reverse.png", id:"frame_reverse"},
+        {src:"img/frames/cassetta.png", id:"frame_cassetta"}
     ];
 
     frameLoader.loadManifest(frameManifest);
@@ -198,6 +203,7 @@ function setupSingleView() {
 	creditBG.graphics.beginFill('#fff').drawRect(0,0,350,250).endFill();
 
 	var backButton = new createjs.Container();
+	backButton.cursor = "pointer";
 	var backButtonBG = new createjs.Shape();
 	backButtonBG.graphics.beginFill("#aaa").drawRoundRect(-20, -20, 125, 75, 15).endFill();
 
@@ -301,6 +307,8 @@ function exitSingleView() {
 	singleView.visible = false;
 	currenState = State.SELECTION;
 	
+	createjs.Sound.stop("mySound");
+
 	/* was in mousedown */
 	$.each(frames, function() {
 		createjs.Tween.get(this.frameContainer).to({x: this.originalX, y: this.originalY, scaleX:1, scaleY:1}, 300);
@@ -327,27 +335,27 @@ function handleFrameLoad(event){
 
 	switch(item.id) {
 		case "frame_reverse":
-			scale = 1.208;
-			ap = new createjs.Point(16,16);
+			scale = 1.13;
+			ap = new createjs.Point(18,18.5);
 			xy = new createjs.Point(0,310)
 			frameType = ArtFrame.FRAME_TYPES.FRAME_REVERSE;
 		break;
 		case "frame_narrow":
 			xy = new createjs.Point(400,20);
-			scale = 1.249;
-			ap = new createjs.Point(4,3);
+			scale = 1.34;
+			ap = new createjs.Point(5,4);
 			frameType = ArtFrame.FRAME_TYPES.FRAME_NARROW;
 		break;
 		case "frame_cassetta":
 			xy = new createjs.Point(390, 310);
-			scale = 1.098;
-			ap = new createjs.Point(21,19);
+			scale = 1.15;
+			ap = new createjs.Point(17,16.5);
 			frameType = ArtFrame.FRAME_TYPES.CASSETTA;
 		break;
 		case "frame_kinglouis":
 			xy = new createjs.Point(0,0);
-			scale = 1.09;
-			ap = new createjs.Point(22,19);
+			scale = 1.025;
+			ap = new createjs.Point(25,26);
 			frameType = ArtFrame.FRAME_TYPES.KING_LOUIS;
 		break;
 	}
@@ -385,11 +393,11 @@ function handleArtLoad(event) {
 	var w = image.width;
 	var h = image.height;
  	var ao = item.data.artObject;
- 	var smallScale = 0.3;
+ 	var smallScale = 0.35;
  	console.log(ao);
 
 	var bmp = new createjs.Bitmap(image);
-	
+	bmp.cursor = "pointer";
 	bmp.scaleX = smallScale;
 	bmp.scaleY = smallScale;
 
@@ -478,7 +486,7 @@ function handleArtLoad(event) {
 				didPlace = true;
 				placedFrameIndex = i;
 				placedFrame = f;
-				f.endGlow();
+				// f.endGlow();
 			}
 
 		}
@@ -499,7 +507,26 @@ function handleArtLoad(event) {
 			bmpc.scaleX = bmpc.scaleY = placedFrame.artScale;
 
 			// might have to calculate per frame type --------VVV
-			createjs.Tween.get(placedFrame.bmp).to({scaleY: h * 0.00568}, 100);
+			var hscale = 0.00568;
+
+			switch(placedFrame.frameType) {
+				case ArtFrame.FRAME_TYPES.FRAME_NARROW:
+					hscale = 0.00541;
+				break;
+				case ArtFrame.FRAME_TYPES.FRAME_REVERSE:
+					hscale = 0.0059;
+				break;
+
+				case ArtFrame.FRAME_TYPES.KING_LOUIS:
+					hscale = 0.0060;
+				break;
+
+				case ArtFrame.FRAME_TYPES.CASSETTA:
+					hscale = 0.00577;
+				break;
+			}
+
+			createjs.Tween.get(placedFrame.bmp).to({scaleY: h * hscale}, 100);
 			
 			for(var i = 0; i < frames.length; i++) {
 				if(i != placedFrameIndex) {

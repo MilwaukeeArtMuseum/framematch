@@ -52,16 +52,27 @@
 		this.originalY = pt.y;
 	}
 	ArtFrame.prototype.glow = function() {
+		var f = this.frameContainer;
+		f.scaleX = f.scaleY = 1.05;
+		f.x = this.originalX-8;
+		f.y = this.originalY-8;
+		/*
 		if(!this.isGlowing) {
 			this.isGlowing = true;
 			createjs.Tween.get(this.frameContainer).to({scaleX: 1.05, scaleY: 1.05, x:this.originalX-8, y:this.originalY-8, override:true}, 200);
 		}
+		*/
 	}
 	ArtFrame.prototype.endGlow = function() {
+		var f = this.frameContainer;
+		f.scaleX = f.scaleY = 1;
+		f.x = this.originalX;
+		f.y = this.originalY;
+		/*
 		if(this.isGlowing) {
 			this.isGlowing = false;
 			createjs.Tween.get(this.frameContainer).to({scaleX: 1, scaleY: 1, x: this.originalX, y: this.originalY, override:true}, 100);
-		}
+		}*/
 	}
 	ArtFrame.prototype.setFrameHeight = function(height) {
 		this.frameContainer.scaleY = height;
