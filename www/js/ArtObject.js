@@ -23,7 +23,7 @@
 	    t.artDate = o.artDate;
 	    t.artMedium = o.artMedium;
 	    t.artDimensions = o.artDimensions;
-	    t.acquisitionDetails = o.acquisitionDetails;
+	    t.acquisitionDetails = stringDivider(o.acquisitionDetails, 50, "\n");
 	    t.artId = o.artId;
 	    t.photoCredit = o.photoCredit;
 	    t.artImageURL = o.artImage;
@@ -40,7 +40,21 @@
 	    t.comment[ArtFrame.FRAME_TYPES.FRAME_REVERSE] = o.commentary.frame_reverse;
 	    t.comment[ArtFrame.FRAME_TYPES.FRAME_NARROW] = o.commentary.frame_narrow;
 	    t.comment[ArtFrame.FRAME_TYPES.CASSETTA] = o.commentary.frame_cassetta;
-	    
+
+	}
+
+	stringDivider = function(str, width, spaceReplacer) {
+	    if (str.length>width) {
+	        var p=width
+	        for (;p>0 && str[p]!=' ';p--) {
+	        }
+	        if (p>0) {
+	            var left = str.substring(0, p);
+	            var right = str.substring(p+1);
+	            return left + spaceReplacer + stringDivider(right, width, spaceReplacer);
+	        }
+	    }
+	    return str;
 	}
 
 	p.getHTMLDesc = function() {
