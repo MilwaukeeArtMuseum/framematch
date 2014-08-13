@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
 	{
 		"id":1,
@@ -208,4 +209,216 @@
 		}
 	}
 		
+=======
+[
+	{
+		"id":1,
+		"artistName":"Romare Bearden", 
+		"artistOrigin": "American",
+		"artistLifeSpan":"1911–1988",
+		"artTitle":"The Street",
+		"artDate":"1964",
+		"artMedium":"Paper collage on cardboard",
+		"artDimensions":"12 7/8 x 15 3/8 in. (32.7 x 39.05 cm)",
+		"acquisitionDetails":"Gift of Friends of Art and African American Art Acquisition Fund",
+		"artId":"M1996.52",
+		"photoCredit":"Larry Sanders",
+		"artImage":"01.png",
+		"audio": {
+			"frame_cassetta":"003Cframe.mp3",
+			"frame_reverse":"003KFRAME.mp3",
+			"frame_kinglouis":"003RFRAME.mp3",
+			"frame_narrow":"003pFRAME.mp3"
+		},
+		"commentary": {
+			"frame_cassetta":"You picked a wooden frame which could look nice on this Romare Bearden collage – but the profile is a little heavy for the image. Why don’t you try a different frame?",
+			"frame_reverse": "This modernist frame from the early 20th century is very strong and bold. Although this is a vibrant collage, the three-dimensionality of this particular frame tends to overpower the image. You might try something a little thinner!\n\nLisa Hostetler, former Milwaukee Art Museum curator of photography.",
+			"frame_kinglouis": "There’s a lot going on in this 1964 collage by Romare Bearden and there’s a lot going on in the frame that you’ve chosen to go with it. The two might compete with each other, in my mind. What do you think?\n\nLisa Hostetler, former Milwaukee Art Museum curator of photography.",
+			"frame_narrow": "Great choice! The 1964 Romare Bearden collage looks great in this minimal black frame.\n\nLisa Hostetler, former Milwaukee Art Museum curator of photography"
+		}
+	}, 
+	{
+		"id":2,
+		"artistName":"Pierre Bonnard", 
+		"artistOrigin": "French",
+		"artistLifeSpan":"1867–1947",
+		"artTitle":"Girl in Straw Hat (Femme au Chapeau Rouge)",
+		"artDate":"1903",
+		"artMedium":"Oil on canvas",
+		"artDimensions":"15 1/8 x 17 5/8 in. (38.42 x 44.77 cm)",
+		"acquisitionDetails":"Gift of Mr. and Mrs. Harry Lynde Bradley",
+		"artId":"M1958.13",
+		"photoCredit":"P. Richard Eells",
+		"artImage":"02.png",
+		"audio": {
+			"frame_cassetta":"002Cframe.mp3",
+			"frame_reverse":"002KFRAME.mp3",
+			"frame_kinglouis":"002RFRAME.mp3",
+			"frame_narrow":"002pFRAME.mp3"
+		},
+		"commentary": {
+			"frame_cassetta":"This combination with the portrait by Bonnard, in a very traditional, very classical frame style, called a cassetta frame – this works well. Although, it may work even better in something with a little bit more ornamentation, a little more decoration, on the frame.",
+			"frame_reverse": "Now with this painting by Bonnard, even though it’s a very strong and powerful portrait, it is painted rather simply. It doesn’t have anything really going on too much in the background. So, it’s mostly a foreground image. And here we have a frame that projects the painting out towards you, away from the wall. I really like this combination, even though you may not see this kind of a frame on this painting in our museum, this is getting fairly close to what the artist probably would have chosen for his own work.",
+			"frame_kinglouis": "Nice choice! Portraits are usually quite powerful images, so they can work well with a frame that has a lot going on, a busy frame, and this is a busy frame in regards to all the ornamentation! These foliage elements in the frame work really well to complement the woman’s hat, and also some of the details in her clothing. Even though this frame itself probably is not something that the artist would have chosen at this time, it’s something that we often see in museums today.",
+			"frame_narrow": "This narrow frame profile – when it’s combined with a painting that a lot of color and strong imagery – it doesn’t really complement or help to focus your interest and attention on the painting. I think a painting of this sort would probably be able to carry a much heavier and much more highly decorated frame. If you try some of the other choices, I think you’ll see what I’m talking about."
+		}
+	},
+	{
+		"id":3,
+		"artistName":"Ted Croner", 
+		"artistOrigin": "American",
+		"artistLifeSpan":"1922-2005",
+		"artTitle":"Times Square Montage",
+		"artDate":"1947",
+		"artMedium":"Gelatin silver print",
+		"artDimensions":"14 7/16 x 17 1/8 in. (36.67 x 43.5 cm)",
+		"acquisitionDetails":"Purchase, Leonard and Bebe LeVine Art Acquisition Fund",
+		"artId":"M2010.27",
+		"photoCredit":"John R. Glembin",
+		"artImage":"03.png",
+		"audio": {
+			"frame_cassetta":"004Cframe.mp3",
+			"frame_reverse":"004KFRAME.mp3",
+			"frame_kinglouis":"004RFRAME.mp3",
+			"frame_narrow":"004pFRAME.mp3"
+		},
+		"commentary": {
+			"frame_cassetta":"Interesting choice! To my eye this wooden frame tends to dominate the black and white photographic image a little too much. Why don’t you try something a little thinner?",
+			"frame_reverse": "The bright white of this strong frame would clash with the mat color that’s been chosen for this image. The slightly warmer mat color seems to call for a different color frame…",
+			"frame_kinglouis": "Interesting choice. This 18th century frame style looks a little out of place on this modern image by Ted Kroner  Why don’t you try a different artwork in this frame?",
+			"frame_narrow": "Excellent choice! The frame looks great on this 1947 image by Ted Kroner of a car racing through the city at night. Remember that curators also choose the mat color to go with the photograph, and in this case, what’s been chosen is warm white as opposed to other colors, which would be yellower and would negatively affect the highlights in this image. "
+		}
+	},
+	{
+		"id":4,
+		"artistName":"Stuart Davis", 
+		"artistOrigin": "American",
+		"artistLifeSpan":"1892-1964",
+		"artTitle":"Color Study For Rapt",
+		"artDate":"1952",
+		"artMedium":"Oil on canvas",
+		"artDimensions":"8 x 10 in. (20.32 x 25.4 cm)",
+		"acquisitionDetails":"Gift of Mrs. Harry Lynde Bradley",
+		"artId":"M1977.80",
+		"photoCredit":"John R. Glembin",
+		"artImage":"04.png",
+		"audio": {
+			"frame_cassetta":"006Cframe.mp3",
+			"frame_reverse":"006KFRAME.mp3",
+			"frame_kinglouis":"006RFRAME.mp3",
+			"frame_narrow":"006pFRAME.mp3"
+		},
+		"commentary": {
+			"frame_cassetta":"This type of frame is something that Stuart Davis normally chooses for his paintings. However, I think the color may be something that Stuart Davis may not have chosen. This may work perhaps in somebody’s home, but maybe not in a museum setting.",
+			"frame_reverse": "This works really well with this frame that you’ve chosen, and if you go out in the gallery and you look at the Stuart Davis frames, you’ll see that his paintings are in white frames. This particular style of frame has an angular slope to the profile. You can also see that the Stuart Davis [frames] in the gallery also project out from the wall.",
+			"frame_kinglouis": "Here we have a very modern painting by Stuart Davis, and you can see the angular images and the bright colors. Perhaps the artist wouldn’t have chosen an older historical style frame with this image. What do you think?",
+			"frame_narrow": "Here we have a very colorful, very interesting, very geometric image by Stuart Davis, and this very simple, linear, and very simple geometric very narrow profile frame seems to work very well with this painting. It really focuses your attention on the image. This is a good choice. "
+		}
+	},
+	{
+		"id":5,
+		"artistName":"Jean Honoré Fragonard ", 
+		"artistOrigin": "French",
+		"artistLifeSpan":"1732-1806",
+		"artTitle":"The Shepherdess",
+		"artDate":"ca. 1750/52",
+		"artMedium":"Oil on canvas",
+		"artDimensions":"46 3/4 x 63 in. (118.75 x 160.02 cm)",
+		"acquisitionDetails":"Bequest of Leon and Marion Kaumheimer",
+		"artId":"M1974.64",
+		"photoCredit":"John Nienhuis, Dedra Walls",
+		"artImage":"05.png",
+		"audio": {
+			"frame_cassetta":"001Cframe.mp3",
+			"frame_reverse":"001KFRAME.mp3",
+			"frame_kinglouis":"001RFRAME.mp3",
+			"frame_narrow":"001pFRAME.mp3"
+		},
+		"commentary": {
+			"frame_cassetta":"This painting by Fragonard with its story going on, and all of the imagery in the background and in the foreground – this actually works quite well in this traditional frame that you’ve chosen. This is a cassetta frame, and it’s often used in many configurations, even on modern paintings.\n\nMark Dombek, former Milwaukee Art Museum frame conservator.",
+			"frame_reverse": "Here we have a beautiful painting by Fragonard. It’s a very fancy painting and you’ve chosen a very plain frame. As we look into this painting, you can see that we have foreground, middle, and background, and your eyes tend to want to drift into the background at some point. I almost think that this very plain and simple frame tends to want to keep you from drifting into the background. But it’s an interesting combination.\n\nMark Dombek, former Milwaukee Art Museum frame conservator",
+			"frame_kinglouis": "That’s a good fit! The painting here by Fragonard that you’ve chosen for this King Louis frame works really well with a painting that has a lot going on in it. And you can see all the foliage in the foreground, and even in the background, and the foliage elements in the ornamentation on the frame. This works really well with this painting.",
+			"frame_narrow": "This is a very simple, very light frame, and normally a painting of this type with a very strong story and image normally goes into a frame that has a wider profile, and has more decoration and carving on the frame. If you go out into the gallery and look at this painting, you’ll see that this is quite a large painting. Large paintings, especially paintings from this time period, usually like wider, heavier frames."
+		}
+	},
+	{
+		"id":6,
+		"artistName":"Francisco de Goya", 
+		"artistOrigin": "Spanish",
+		"artistLifeSpan":"1746-1828",
+		"artTitle":"The Daring of Martincho in the Ring at Saragossa; From the portfolio La Tauromaquia",
+		"artDate":"1816",
+		"artMedium":"Etching, burnished aquatint, and engraving",
+		"artDimensions":"plate: 9 5/8 x 13 13/16 in. (24.45 x 35.09 cm)",
+		"acquisitionDetails":"Bequest of Howard L. Zetteler in memory of his wife, Evelyn H. Zetteler",
+		"artId":"M1983.204.18",
+		"photoCredit":"Larry Sanders",
+		"artImage":"06.png",
+		"audio": {
+			"frame_cassetta":"007Cframe.mp3",
+			"frame_reverse":"007KFRAME.mp3",
+			"frame_kinglouis":"007RFRAME.mp3",
+			"frame_narrow":"007pFRAME.mp3"
+		},
+		"commentary": {
+			"frame_cassetta":"Hmm, I think this heavy wooden frame looks a little funny on this bold, graphic etching by Goya. I say this because with bold graphic statements such as this, we usually choose a thinner profile to complement it.\n\nLisa Hostetler, former Milwaukee Art Museum curator of photography.",
+			"frame_reverse": "In my view this frame looks bulky compared to the more intimately sized etching. Next time you are in the galleries, notice the frames and mats we use on prints, drawings, and photographs.\n\nLisa Hostetler, former Milwaukee Art Museum curator of photography",
+			"frame_kinglouis": "As a curator, I probably wouldn’t chose this frame, because it tends to overpower the Goya etching that it surrounds. Why don’t you try something a little more minimal?\n\nLisa Hostetler, former Milwaukee Art Museum curator of photography",
+			"frame_narrow": "Excellent! This bold Goya print from 1815-1816 looks great in this understated black frame.\n\nLisa Hostetler, former Milwaukee Art Museum curator of photography"
+		}
+	},
+	{
+		"id":7,
+		"artistName":"Vassily Kandinsky", 
+		"artistOrigin": "Russian",
+		"artistLifeSpan":"1866-1944",
+		"artTitle":"Fragment I for Composition VII (Center)",
+		"artDate":"1913",
+		"artMedium":"Oil on canvas, stretchers",
+		"artDimensions":"34 15/16 x 39 7/16 in. (88.74 x 100.17 cm)",
+		"acquisitionDetails":"Gift of Mrs. Harry Lynde Bradley",
+		"artId":"M1958.12",
+		"photoCredit":"Larry Sanders",
+		"artImage":"07.png",
+		"audio": {
+			"frame_cassetta":"005Cframe.mp3",
+			"frame_reverse":"005KFRAME.mp3",
+			"frame_kinglouis":"005RFRAME.mp3",
+			"frame_narrow":"005pFRAME.mp3"
+		},
+		"commentary": {
+			"frame_cassetta":"This frame tends to want to flatten the imagery out, maybe flatten out the color a little bit, but the simple profile seems to work well. But I think maybe more than anything, it might be that natural wood grain finish that you see that may be causing a little bit of competition here. Do you think maybe a different color might work better?\n\nMark Dombek, former Milwaukee Art Museum frame conservator. ",
+			"frame_reverse": "I like that combination! Now with this frame it tends to bring this image out towards you. This is a frame that we think Kandinsky probably would have liked to have had on his painting. It’s also what we have on the painting out in the galleries. So you might want to go out and have a look for yourself and see how it actually looks in the frame!\n\nMark Dombek, former Milwaukee Art Museum frame conservator",
+			"frame_kinglouis": "This painting by Kandinsky that you’ve chosen is a very colorful and expressionist-type image that, in some ways actually works with the ornamentation. But because the ornamentation is more of a natural imagery that you would actually see in nature, and the images that you see in the painting are things that seem to come from more the artist’s imagination, it doesn’t really work with this period historical frame.",
+			"frame_narrow": "Even though we often see large modern paintings in very narrow frames, or even no frame at all, with this frame being rather dark, it tends to almost be interpreted as part of the image itself. So maybe that dark color may not work the best with this painting. It also tends to want to restrict the painting, it doesn’t let the painting move out from the borders – and I think if this were in a lighter color or a frame that projected it out from the wall, it would allow your imagination to drift off of the borders of the painting itself, and I think that’s maybe what Kandinsky might be wanting us to do. What do you think about that?"
+		}
+	},
+	{
+		"id":8,
+		"artistName":"Joán Miró", 
+		"artistOrigin": "Spanish",
+		"artistLifeSpan":"1893-1983",
+		"artTitle":"The King's Jester (Le Fou Du Roi)",
+		"artDate":"1926",
+		"artMedium":"Oil, pencil and charcoal on canvas",
+		"artDimensions":"45 x 57 1/2 in. (114.3 x 146.05 cm)",
+		"acquisitionDetails":"Gift of Mr. and Mrs. Maurice W. Berger",
+		"artId":"M1966.142",
+		"photoCredit":"John Nienhuis, Dedra Walls",
+		"artImage":"08.png",
+		"audio": {
+			"frame_cassetta":"008Cframe.mp3",
+			"frame_reverse":"008KFRAME.mp3",
+			"frame_kinglouis":"008RFRAME.mp3",
+			"frame_narrow":"008pFRAME.mp3"
+		},
+		"commentary": {
+			"frame_cassetta":"This painting by Joan Miró – it’s a really nice choice you’ve made here, with this simple traditional classical cassetta style frame! You might even see, if you go up in the gallery, that it’s pretty much the same style of frame that we have on the painting. This is a really nice choice.\n\nMark Dombek, former Milwaukee Art Museum frame conservator.",
+			"frame_reverse": "This Miró is a really nice painting and works very well in this profile being projected out from the wall in this reverse section frame. Maybe there’s a little bit too much white in the frame, because we have so much white in the painting itself. What do you think if this was in a darker frame? Have you looked at the frame that’s on the Miró out in the galleries?\n\nMark Dombek, former Milwaukee Art Museum frame conservator ",
+			"frame_kinglouis": "This painting, even though it’s a two-dimensional, rather flat image, is very powerful, very strong. The carved ornamentation on the frame as well is very powerful and strong, but for some reason it just tends to want to distract me from looking at this image. I tend to want to look more at the frame than I do the image. What do you think about that?",
+			"frame_narrow": "You’ve chosen a very simple, uncomplicated frame that doesn’t distract, and it doesn’t disrupt, this very fine, very powerful image. It’s a very nice choice – it really enhances the painting.\n\nMark Dombek, former Milwaukee Art Museum frame conservator"
+		}
+	}
+		
+>>>>>>> FETCH_HEAD
 ]

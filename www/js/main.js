@@ -25,6 +25,7 @@ var logoBox;
 var soundEnabled = true;
 var artistInfo;
 
+<<<<<<< HEAD
 var bgColor = "#984daf";
 var frameBg = "#a48ca4";
 var artBoxDark = "#794b93";
@@ -35,6 +36,10 @@ var buttonColor = artBoxDark;
 var splashBox;
 
 var isOverlay = true;
+=======
+var bgColor = "#734d73";
+var frameBg = "#a48ca4";
+>>>>>>> FETCH_HEAD
 
 State = {
 			INIT:"state_init",
@@ -513,10 +518,16 @@ function handleFrameLoad(event){
 			frameType = ArtFrame.FRAME_TYPES.FRAME_REVERSE;
 		break;
 		case "frame_narrow":
+<<<<<<< HEAD
 			xy = new createjs.Point(390,0);
 			scale = 1.34;
 			ap = new createjs.Point(5,4);
 			po = new createjs.Point(-15,-15);
+=======
+			xy = new createjs.Point(400,20);
+			scale = 1.34;
+			ap = new createjs.Point(5,4);
+>>>>>>> FETCH_HEAD
 			frameType = ArtFrame.FRAME_TYPES.FRAME_NARROW;
 
 		break;
@@ -524,14 +535,20 @@ function handleFrameLoad(event){
 			xy = new createjs.Point(390, 310);
 			scale = 1.15;
 			ap = new createjs.Point(17,16.5);
+<<<<<<< HEAD
 			po = new createjs.Point(-3, -3);
+=======
+>>>>>>> FETCH_HEAD
 			frameType = ArtFrame.FRAME_TYPES.CASSETTA;
 		break;
 		case "frame_kinglouis":
 			xy = new createjs.Point(0,0);
 			scale = 1.025;
 			ap = new createjs.Point(25,26);
+<<<<<<< HEAD
 			po = new createjs.Point(8,7);
+=======
+>>>>>>> FETCH_HEAD
 			frameType = ArtFrame.FRAME_TYPES.KING_LOUIS;
 		break;
 	}
@@ -699,31 +716,50 @@ function handleArtLoad(event) {
 
 			// might have to calculate per frame type --------VVV
 			var hscale = 0.00568;
+<<<<<<< HEAD
 			var hdiv = null;;
+=======
+>>>>>>> FETCH_HEAD
 
 			switch(placedFrame.frameType) {
 				case ArtFrame.FRAME_TYPES.FRAME_NARROW:
 					hscale = 0.00541;
+<<<<<<< HEAD
 					hdiv = 60;
 				break;
 				case ArtFrame.FRAME_TYPES.FRAME_REVERSE:
 					hscale = 0.0059;
 					hdiv = 80;
+=======
+				break;
+				case ArtFrame.FRAME_TYPES.FRAME_REVERSE:
+					hscale = 0.0059;
+>>>>>>> FETCH_HEAD
 				break;
 
 				case ArtFrame.FRAME_TYPES.KING_LOUIS:
 					hscale = 0.0060;
+<<<<<<< HEAD
 					hdiv = 70;
+=======
+>>>>>>> FETCH_HEAD
 				break;
 
 				case ArtFrame.FRAME_TYPES.CASSETTA:
 					hscale = 0.00577;
+<<<<<<< HEAD
 					hdiv = 60;
+=======
+>>>>>>> FETCH_HEAD
 				break;
 			}
 
 			createjs.Tween.get(placedFrame.bmp).to({scaleY: h * hscale}, 100);
+<<<<<<< HEAD
 			singleView.commentText.y = 210 + (h) + hdiv; 
+=======
+			
+>>>>>>> FETCH_HEAD
 			for(var i = 0; i < frames.length; i++) {
 
 				var sf = frames[i];
