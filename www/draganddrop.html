@@ -6,26 +6,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<<<<<<< HEAD
         <title>Kohl's Art Generation Gallery - Illusions: Near and Far</title>
-=======
-        <title></title>
->>>>>>> FETCH_HEAD
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
-<<<<<<< HEAD
         <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-=======
-
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-
-    
-
->>>>>>> FETCH_HEAD
 	<script>
 
 	var canvas, stage;
@@ -38,18 +26,12 @@
 	var buttonColor = "#3032b0";
 	var skyColor = "#08a5ff";//"#734d73";
 	var grassColor= "#08cca5";
-<<<<<<< HEAD
 	var logoBoxDark = "110b15";
-=======
->>>>>>> FETCH_HEAD
 	var backButton;
 	var isOverlay = true;
 	var objContainer;
 	var overlay; 
-<<<<<<< HEAD
 	var headerBox;
-=======
->>>>>>> FETCH_HEAD
 
 	function init() {
 		if (window.top != window) {
@@ -79,7 +61,6 @@
 		objLoader.on("fileload", handleObjLoad, this);
 		objLoader.on("complete", handleObjComplete, this);
 
-<<<<<<< HEAD
 
 var objManifest = [
 {src:"img/dragdrop/object17.png", id:"object17", data:{flip:0, scale:0.3, x:345, y:726}},
@@ -176,61 +157,6 @@ clouds
 {src:"img/dragdrop/object38.png", id:"object38", data:{scale:0.5, x:820, y:22}},
 
 */
-=======
-var objManifest = [
-{src:"img/dragdrop/object03.png", id:"object03", data:{x:37, y:129}},
-{src:"img/dragdrop/object34.png", id:"object34", data:{x:38, y:127}},
-{src:"img/dragdrop/object33.png", id:"object33", data:{x:69, y:168}},
-{src:"img/dragdrop/object35.png", id:"object35", data:{x:118, y:141}},
-{src:"img/dragdrop/object43.png", id:"object43", data:{x:371, y:64}},
-{src:"img/dragdrop/object49.png", id:"object49", data:{x:452, y:41}},
-{src:"img/dragdrop/object31.png", id:"object31", data:{x:387, y:28}},
-{src:"img/dragdrop/object44.png", id:"object44", data:{x:314, y:43}},
-{src:"img/dragdrop/object12.png", id:"object12", data:{x:511, y:48}},
-{src:"img/dragdrop/object28.png", id:"object28", data:{x:572, y:44}},
-{src:"img/dragdrop/object40.png", id:"object40", data:{x:652, y:51}},
-{src:"img/dragdrop/object02.png", id:"object02", data:{x:655, y:52}},
-{src:"img/dragdrop/object01.png", id:"object01", data:{x:655, y:55}},
-{src:"img/dragdrop/object45.png", id:"object45", data:{x:734, y:26}},
-{src:"img/dragdrop/object47.png", id:"object47", data:{x:801, y:70}},
-{src:"img/dragdrop/object38.png", id:"object38", data:{x:820, y:22}},
-{src:"img/dragdrop/object41.png", id:"object41", data:{x:913, y:45}},
-{src:"img/dragdrop/object48.png", id:"object48", data:{x:52, y:51}},
-{src:"img/dragdrop/object39.png", id:"object39", data:{x:215, y:31}},
-{src:"img/dragdrop/object46.png", id:"object46", data:{x:151, y:74}},
-{src:"img/dragdrop/object06.png", id:"object06", data:{x:748, y:596}},
-{src:"img/dragdrop/object25.png", id:"object25", data:{x:922, y:635}},
-{src:"img/dragdrop/object52.png", id:"object52", data:{x:88, y:236}},
-{src:"img/dragdrop/object05.png", id:"object05", data:{x:961, y:564}},
-{src:"img/dragdrop/object04.png", id:"object04", data:{x:934, y:469}},
-{src:"img/dragdrop/object08.png", id:"object08", data:{x:936, y:470}},
-{src:"img/dragdrop/object24.png", id:"object24", data:{x:935, y:469}},
-{src:"img/dragdrop/object15.png", id:"object15", data:{x:427, y:655}},
-{src:"img/dragdrop/object13.png", id:"object13", data:{x:600, y:594}},
-{src:"img/dragdrop/object14.png", id:"object14", data:{x:495, y:582}},
-{src:"img/dragdrop/object16.png", id:"object16", data:{x:425, y:582}},
-{src:"img/dragdrop/object07.png", id:"object07", data:{x:490, y:648}},
-{src:"img/dragdrop/object19.png", id:"object19", data:{x:854, y:572}},
-{src:"img/dragdrop/object11.png", id:"object11", data:{x:351, y:609}},
-{src:"img/dragdrop/object37.png", id:"object37", data:{x:256, y:616}},
-{src:"img/dragdrop/object23.png", id:"object23", data:{x:35, y:660}},
-{src:"img/dragdrop/object22.png", id:"object22", data:{x:102, y:661}},
-{src:"img/dragdrop/object21.png", id:"object21", data:{x:178, y:665}},
-{src:"img/dragdrop/object51.png", id:"object51", data:{x:101, y:592}},
-{src:"img/dragdrop/object50.png", id:"object50", data:{x:935, y:266}},
-{src:"img/dragdrop/object32.png", id:"object32", data:{x:964, y:191}},
-{src:"img/dragdrop/object30.png", id:"object30", data:{x:899, y:139}},
-{src:"img/dragdrop/object10.png", id:"object10", data:{x:973, y:345}},
-{src:"img/dragdrop/object09.png", id:"object09", data:{x:908, y:371}},
-{src:"img/dragdrop/object42.png", id:"object42", data:{x:48, y:404}},
-{src:"img/dragdrop/object27.png", id:"object27", data:{x:50, y:309}},
-{src:"img/dragdrop/object29.png", id:"object29", data:{x:111, y:346}},
-{src:"img/dragdrop/object53.png", id:"object53", data:{x:86, y:483}},
-{src:"img/dragdrop/object18.png", id:"object18", data:{x:124, y:730}},
-{src:"img/dragdrop/object17.png", id:"object17", data:{x:345, y:726}},
-{src:"img/dragdrop/object20.png", id:"object20", data:{x:517, y:729}},
-{src:"img/dragdrop/object26.png", id:"object26", data:{x:647, y:697}}];
->>>>>>> FETCH_HEAD
 
 		objContainer = new createjs.Container();
 
@@ -248,14 +174,9 @@ var objManifest = [
 		frame.y = 100;
 
 		overlay = new createjs.Bitmap("img/dragdrop/overlay.png");
-<<<<<<< HEAD
 		overlay.shadow = new createjs.Shadow("#333333", 2, 2, 5);
 		overlay.x = 140;
 		overlay.y = 170;
-=======
-		overlay.x = 150;
-		overlay.y = 50;
->>>>>>> FETCH_HEAD
 
 		overlay.on("pressmove", function(evt) {
 			this.parent.removeChild(this);
@@ -263,7 +184,6 @@ var objManifest = [
 
 		var sky = new createjs.Shape();
 		sky.graphics.beginFill(skyColor);
-<<<<<<< HEAD
 		sky.graphics.drawRect(frame.x+2,frame.y+2,671,427);
 		sky.graphics.endFill();
 		sky.shadow = new createjs.Shadow("#111133", 0, 0, 40);
@@ -271,19 +191,10 @@ var objManifest = [
 		var grass = new createjs.Shape();
 		grass.graphics.beginFill(grassColor);
 		grass.graphics.drawRect(frame.x,frame.y+200,670,210);
-=======
-		sky.graphics.drawRect(frame.x+5,frame.y+5,670,420);
-		sky.graphics.endFill();
-
-		var grass = new createjs.Shape();
-		grass.graphics.beginFill(grassColor);
-		grass.graphics.drawRect(frame.x,frame.y+230,670,190);
->>>>>>> FETCH_HEAD
 		grass.graphics.endFill();
 
 		backButton = createButton(880, 690, 140, 'RESET', resetObjects);
 		saveButton = createButton(740, 690, 120, 'SAVE', saveImage);
-<<<<<<< HEAD
 
 		backButton.shadow = new createjs.Shadow("#6666ff", 0,0,15);
 		saveButton.shadow = new createjs.Shadow("#6666ff", 0,0,15);
@@ -320,15 +231,6 @@ function createLogoBox() {
 
 }
 
-=======
-		stage.addChild(bg, sky, grass, objContainer, frame, backButton, saveButton, overlay);		
-		
-		//image.onload = handleImageLoad;
-
-
-
-	}
->>>>>>> FETCH_HEAD
 
 	function stop() {
 		//createjs.Ticker.removeEventListener("tick", tick);
@@ -381,11 +283,7 @@ function createLogoBox() {
 
 			var c = objContainer.getChildAt(i);
 			
-<<<<<<< HEAD
 			oc += '{src:"img/dragdrop/'+c.name +'.png", id:"'+c.name+'", data:{flip:'+c.flip+', scale:'+c.scale+', x:' + c.x + ', y:' + c.y + "}},\n";
-=======
-			oc += '{src:"img/dragdrop/'+c.name +'.png", id:"'+c.name+'", data:{x:' + c.x + ', y:' + c.y + "}},\n";
->>>>>>> FETCH_HEAD
 
 			//document.getElementById("debug").value = "{x:" + c.x + ", y:" + c.y + "}";	
 		}
@@ -401,7 +299,6 @@ function createLogoBox() {
 		var outputCan = document.getElementById("c2");
 		var outputImg = outputCan.getContext('2d');
 
-<<<<<<< HEAD
 		
 		// context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
 		outputImg.drawImage(canvas, 170,100,675,431,0,0,675,431);
@@ -411,16 +308,6 @@ function createLogoBox() {
 		//var image = outputCan.toDataURL("image/png").replace("image/png", "image/octet-stream");
 		
 		//window.location.href=image; // it will save locally
-=======
-		//call its drawImage() function passing it the source canvas directly
-		// context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
-		outputImg.drawImage(canvas, 170,100,675,431,0,0,675,431);
-
-
-		var image = outputCan.toDataURL("image/png").replace("image/png", "image/octet-stream");
-		
-		window.location.href=image; // it will save locally
->>>>>>> FETCH_HEAD
 
 	}
 
@@ -453,18 +340,13 @@ function createLogoBox() {
 		objContainer.addChild(bitmap);
 		bitmap.x = item.data.x;
 		bitmap.y = item.data.y;
-<<<<<<< HEAD
 		bitmap.flip = item.data.flip;
-=======
-		
->>>>>>> FETCH_HEAD
 		bitmap.origX = item.data.x;
 		bitmap.origY = item.data.y;
 
 		//bitmap.rotation = 360 * Math.random()|0;
 		bitmap.regX = bitmap.image.width/2|0;
 		bitmap.regY = bitmap.image.height/2|0;
-<<<<<<< HEAD
 		var s = 0.5;
 
 		if(item.data.scale) {
@@ -481,35 +363,22 @@ function createLogoBox() {
 		bitmap.cursor = "pointer";
 
 		bitmap.shadow = new createjs.Shadow("#111111", 1, 1, 3);
-=======
-		bitmap.scaleX = bitmap.scaleY = bitmap.scale = 0.5;//Math.random()*0.4+0.6;
-		bitmap.name = item.id;
-		bitmap.cursor = "pointer";
->>>>>>> FETCH_HEAD
 		
 		// using "on" binds the listener to the scope of the currentTarget by default
 		// in this case that means it executes in the scope of the button.
 		bitmap.on("mousedown", function(evt) {
-<<<<<<< HEAD
 			
 			this.parent.addChild(this);
 			
 			this.offset = {x:this.x-evt.stageX, y:this.y-evt.stageY};
 
-=======
-			this.parent.addChild(this);
-			this.offset = {x:this.x-evt.stageX, y:this.y-evt.stageY};
->>>>>>> FETCH_HEAD
 			if(isOverlay) {
 				isOverlay = false;
 				createjs.Tween.get(overlay).to({alpha:0}, 500).call(function() {overlay.parent.removeChild(overlay);}); //circOut is really nice
 				//overlay.parent.removeChild(overlay);
 			}
-<<<<<<< HEAD
 
 			console.log(this.name);
-=======
->>>>>>> FETCH_HEAD
 			
 		});
 		
@@ -522,30 +391,22 @@ function createLogoBox() {
 		});
 		
 		bitmap.on("rollover", function(evt) {
-<<<<<<< HEAD
 			if(this.flip) {
 				this.scaleX = -this.scale * 1.1;
 				this.scaleY = this.scale * 1.1;
 			} else {
 				this.scaleX = this.scaleY = this.scale*1.1;
 			}
-=======
-			this.scaleX = this.scaleY = this.scale*1.1;
->>>>>>> FETCH_HEAD
 			update = true;
 		});
 		
 		bitmap.on("rollout", function(evt) {
-<<<<<<< HEAD
 			if(this.flip) {
 				this.scaleX = - this.scale;
 				this.scaleY = this.scale;
 			} else {
 				this.scaleX = this.scaleY = this.scale;
 			}
-=======
-			this.scaleX = this.scaleY = this.scale;
->>>>>>> FETCH_HEAD
 			update = true;
 		});
 
@@ -554,7 +415,6 @@ function createLogoBox() {
 		//stage.addChild(container);
 	}
 
-<<<<<<< HEAD
 
 	savePNG = function(cnvs, fname, url) {
 		if(!cnvs || !url) return;
@@ -606,23 +466,6 @@ function createLogoBox() {
 
 		
 
-=======
-	
-	</script>
-	<style type="text/css">
-		body {
-			background-color: #5e62d4;
-		}
-		.canvasHolder {
-			margin-top: 20px;
-
-		}
-		#testCanvas {
-			padding: 15px;
-			border: 1px solid #8888cc;
-			background-color: #5154d2;
-		}
->>>>>>> FETCH_HEAD
 	</style>
 
 </head>
@@ -637,14 +480,9 @@ function createLogoBox() {
 		<canvas id="c2" width="675" height="431" style="display:none;"></canvas>
 	</div>
 	</center>
-<<<<<<< HEAD
 	
 	<!--
 	<input type="text" id="debug">
-=======
-	<!--<input type="text" id="debug">-->
-	<!--
->>>>>>> FETCH_HEAD
 	<input type="button" id="debugButton" value="debug" onclick="outputDebug();" />
 	<textarea id="debugText" style="width:500px; height: 800px;"></textarea>
 	-->
