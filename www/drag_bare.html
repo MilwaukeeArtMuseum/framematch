@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      
+        <title>Kohl's Art Generation Gallery - Illusions: Near and Far</title>
+        
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+		
+		<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+		<script src="js/dragdrop.js"></script>
+
+		<style type="text/css">
+			body {
+				background-color: #5e62d4;
+
+			}
+			#stageCanvas {
+				background-color: #5154d2;
+				background-image: url('img/dragdrop/bg.jpg');
+				
+			}
+
+		</style>
+
+	</head>
+
+	<body onload="init();">
+
+		<div id="loader"></div>
+		<center>
+			<div class="canvasHolder">
+				<canvas id="stageCanvas" width="1024" height="768"></canvas>
+				<!-- secondary canvas for output rendering -->
+				<canvas id="c2" width="675" height="431" style="display:none;"></canvas>
+			</div>
+		</center>
+		
+		<!--
+		<input type="text" id="debug">
+		<input type="button" id="debugButton" value="debug" onclick="outputDebug();" />
+		<textarea id="debugText" style="width:500px; height: 800px;"></textarea>
+		-->
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+
+        <script src="http://code.createjs.com/easeljs-0.7.1.min.js"></script>
+        <script src="http://code.createjs.com/tweenjs-0.5.1.min.js"></script>
+        <script src="http://code.createjs.com/preloadjs-0.4.1.min.js"></script>
+        <script src="http://code.createjs.com/soundjs-0.5.2.min.js"></script>
+		
+	</body>
+</html>
