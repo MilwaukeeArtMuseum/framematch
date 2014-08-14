@@ -54,7 +54,7 @@ function init() {
 	document.getElementById("loader").className = "loader";
 	
 	// create stage and point it to the canvas:
-	canvas = document.getElementById("testCanvas");
+	canvas = document.getElementById("stageCanvas");
 	
 	//check to see if we are running in a browser with touch support
 	stage = new createjs.Stage(canvas);
