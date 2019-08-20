@@ -1,3 +1,3 @@
 framematch
 ==========
-Audio files & art images have been ommitted.
+Audio files & art images have been ommitte due to copyright
